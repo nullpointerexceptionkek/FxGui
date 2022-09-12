@@ -3,7 +3,7 @@ package discordrpc;
 import java.util.ArrayList;
 
 public class Script {
-	private ArrayList<Updates> totalupdates;
+	private static ArrayList<Updates> totalupdates;
 	
 	public Script() {
 		totalupdates = new ArrayList<Updates>();
@@ -31,7 +31,7 @@ public class Script {
 		totalupdates.add(new Updates(3000,"I cannot deliver you your love","Or caress your soul"));
 	}
 	
-	public ArrayList<Updates> getTotalupdates() {
+	public static ArrayList<Updates> getTotalupdates() {
 		return totalupdates;
 	}
 	

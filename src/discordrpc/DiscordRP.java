@@ -14,10 +14,10 @@ public class DiscordRP {
 	
 	private long created = 0;
 	
-	protected String apikey;
+	public static String apikey;
 	
 	
-	public void start(){
+	public void LaunchCallBack(){
 		this.created = System.currentTimeMillis();
 		
 		DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler(new ReadyCallback() {
@@ -29,7 +29,7 @@ public class DiscordRP {
 		}).build();
 		
 		
-		DiscordRPC.discordInitialize(loadKeyFromJson(), handlers, true);
+		DiscordRPC.discordInitialize(apikey, handlers, true);
 		
 		new Thread("Discord RPC Callback"){
 			
@@ -42,6 +42,10 @@ public class DiscordRP {
 			}
 		}.start();
 		
+	}
+	
+	public void init() {
+		apikey = loadKeyFromJson();
 	}
 	
 	public void shutdown() {

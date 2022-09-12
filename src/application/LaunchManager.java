@@ -14,18 +14,25 @@ public class LaunchManager extends Thread{
 	private static UpdateManager upm;
 	
 	public static void init() {
-		isRunning = true;
 		FileManager.init();
-		discordRP.start();
-		
+		discordRP.init();
 		upm = new UpdateManager();
-		
-		LaunchManager runloop = new LaunchManager();
-		runloop.start();
-		
 		
 		
 	}
+	
+	public static void initCallBack() {
+		discordRP.LaunchCallBack();
+		LaunchManager runloop = new LaunchManager();
+		runloop.start();
+		isRunning = true;
+	}
+	
+	public static void closeCallBack() {
+		discordRP.shutdown();
+		isRunning = false;
+	}
+	
 	
 	
 	@Override
@@ -34,12 +41,12 @@ public class LaunchManager extends Thread{
 		while(isRunning) {
 			
 			for(int i = 0; i< upm.getUpdates().getSize(); i++) {
+				if(!isRunning)return;
 				excuteUpdate(upm.getUpdates().getUpdates(i));
 			}
 			
 		}
 		
-		LaunchManager.onClose();
 		
 	}
 	

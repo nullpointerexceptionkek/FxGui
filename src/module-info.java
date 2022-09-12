@@ -7,4 +7,5 @@ module FxGui {
 	requires javafx.base;
 	
 	opens application to javafx.graphics, javafx.fxml;
+	exports application;
 }

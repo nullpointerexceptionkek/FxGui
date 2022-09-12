@@ -16,7 +16,7 @@ public class Launch extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			//LaunchManager.init();
+			LaunchManager.init();
 			Parent root = FXMLLoader.load(getClass().getResource("/application/Config.fxml"));
 			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
@@ -39,6 +39,7 @@ public class Launch extends Application {
 				System.exit(1);
 			}
 		}
+		
 		
 	}
 	
