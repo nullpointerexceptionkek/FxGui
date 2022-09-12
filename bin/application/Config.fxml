@@ -12,7 +12,7 @@
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Button fx:id="LaunchButton" layoutX="110.0" layoutY="486.0" mnemonicParsing="false" text="Launch Call Back" />
+      <Button fx:id="LaunchButton" layoutX="110.0" layoutY="485.0" mnemonicParsing="false" onAction="#switchToCallBack" text="Launch Call Back" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="106.0" layoutY="72.0" prefHeight="18.0" prefWidth="123.0" text="Application ID" />
       <TextField layoutX="67.0" layoutY="103.0" prefHeight="26.0" prefWidth="202.0" promptText="Enter Discord Application ID" />
    </children>
