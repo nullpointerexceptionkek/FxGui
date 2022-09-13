@@ -20,7 +20,7 @@ public class ScriptAdapter extends TypeAdapter<Script>{
 	         return null;
 	         }
 		try {
-			Script tu = new Script();
+			Script tu = new Script(true);
 			String v = reader.nextString();
 			String[] parts = v.split("-");
 			for(String u : parts) {

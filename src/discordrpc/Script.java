@@ -5,10 +5,12 @@ import java.util.ArrayList;
 public class Script {
 	private static ArrayList<Updates> totalupdates;
 	
-	public Script() {
+	public Script(boolean createnew) {
 		totalupdates = new ArrayList<Updates>();
-		totalupdates.add(new Updates(3000,"This is the default message","if the config cannot be loaded"));
+		if(!createnew) return;
+		//totalupdates.add(new Updates(3000,"This is the default message","if the config cannot be loaded"));
 	}
+	
 	
 	public static ArrayList<Updates> getTotalupdates() {
 		return totalupdates;
@@ -41,7 +43,7 @@ public class Script {
 	}
 	
 	public static Script fromTotalUpdates() {
-		return new Script();
+		return new Script(false);
 	}
 	
 	@Override
