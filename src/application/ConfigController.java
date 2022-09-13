@@ -33,7 +33,10 @@ public class ConfigController implements Initializable{
 	private ListView<Updates> displayUpdates;
 	
 	public void switchToCallBack(ActionEvent event) throws IOException{
+		//update DiscordRP app id and save it to the file
 		String DiscordAppID = appID.getText();
+		DiscordRP.apikey = DiscordAppID;
+		DiscordRP.saveKeyToFile();
 		//System.out.println(DiscordAppID);
 		root = FXMLLoader.load(getClass().getResource("/application/CallBack.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();

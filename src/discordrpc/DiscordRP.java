@@ -17,7 +17,7 @@ public class DiscordRP {
 	public static String apikey;
 	
 	
-	public void LaunchCallBack(){
+	public void LaunchReadyCallBack(){
 		this.created = System.currentTimeMillis();
 		
 		DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler(new ReadyCallback() {
@@ -44,6 +44,7 @@ public class DiscordRP {
 		
 	}
 	
+	
 	public void init() {
 		apikey = loadKeyFromJson();
 	}
@@ -58,6 +59,8 @@ public class DiscordRP {
 		presence.setBigImage("large", "");
 		presence.setDetails(firstLine);
 		presence.setStartTimestamps(created);
+		//presence.setSmallImage("large", "");
+		//presence.setParty("party", 2, 3);
 		DiscordRPC.discordUpdatePresence(presence.build());
 		
 	}
@@ -80,7 +83,7 @@ public class DiscordRP {
 		
 	}
 	
-	public void saveKeyToFile() {
+	public static void saveKeyToFile() {
 		FileManager.writeJsonTofile(new File(FileManager.getROOT_DIR(), "key.json"), apikey);
 	}
 	

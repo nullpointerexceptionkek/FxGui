@@ -17,7 +17,7 @@ public class Launch extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			LaunchManager.init();
-			Parent root = FXMLLoader.load(getClass().getResource("/application/Config.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/application/ReadyConfig.fxml"));
 			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Custom Discord RPC");

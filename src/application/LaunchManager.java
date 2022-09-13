@@ -22,7 +22,7 @@ public class LaunchManager extends Thread{
 	}
 	
 	public static void initCallBack() {
-		discordRP.LaunchCallBack();
+		discordRP.LaunchReadyCallBack();
 		LaunchManager runloop = new LaunchManager();
 		runloop.start();
 		isRunning = true;

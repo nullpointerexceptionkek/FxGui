@@ -23,7 +23,7 @@ public class CallBackController {
 		Playing.setText(fl);
 	}
 	public void switchToConfig(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/application/Config.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("/application/ReadyConfig.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
