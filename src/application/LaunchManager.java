@@ -72,8 +72,9 @@ public class LaunchManager extends Thread{
 	}
 	
 	public static void onClose() {
-		//discordRP.saveKeyToFile();
-		//upm.saveScriptToFile();
+		DiscordRP.saveKeyToFile();
+		upm.saveScriptToFile();
+		discordRP.shutdown();
 		System.exit(0);
 	}
 	

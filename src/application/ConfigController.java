@@ -4,6 +4,8 @@ package application;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import discordrpc.DiscordRP;
@@ -31,6 +33,7 @@ public class ConfigController implements Initializable{
 	private TextField appID;
 	@FXML
 	private ListView<Updates> displayUpdates;
+	private ArrayList<Updates> u;
 	
 	public void switchToCallBack(ActionEvent event) throws IOException{
 		//update DiscordRP app id and save it to the file
@@ -43,6 +46,9 @@ public class ConfigController implements Initializable{
 		scene = new Scene(root);
 		stage.setScene(scene);
 		stage.show();
+		System.out.println(displayUpdates.getItems());
+		u = new ArrayList<>(displayUpdates.getItems());
+		Script.setTotalupdates(u); 
 		LaunchManager.initCallBack();
 	}
 
