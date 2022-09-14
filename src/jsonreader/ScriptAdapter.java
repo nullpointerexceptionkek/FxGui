@@ -24,7 +24,7 @@ public class ScriptAdapter extends TypeAdapter<Script>{
 			String v = reader.nextString();
 			String[] parts = v.split("-");
 			for(String u : parts) {
-				String[] uParts = u.split(",");
+				String[] uParts = u.split(", ");
 				long wait = Long.parseLong(uParts[0]);
 			    String F1 = uParts[1];
 			    String S1 = uParts[2];
