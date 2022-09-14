@@ -21,9 +21,9 @@ public class UpdateManager{
 		this.updates = loaded;
 		
 		if(loaded == null) {
-			System.out.println("testttt");
 			loaded = Script.fromTotalUpdates();
 			this.updates = loaded;
+			Script.addUpdates(new Updates(3000, "First line", "Second line"));
 			saveScriptToFile();	
 		}
 		
