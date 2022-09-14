@@ -73,6 +73,14 @@ public class ConfigController implements Initializable{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		//add lister to check if the listview is changed :/
+		displayUpdates.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Updates>() {
+			@Override
+			public void changed(ObservableValue<? extends Updates> arg0, Updates arg1, Updates arg2) {
+				
+				System.out.println(displayUpdates.getSelectionModel().getSelectedItem());
+			}	
+		});
 	}
 	
 	
