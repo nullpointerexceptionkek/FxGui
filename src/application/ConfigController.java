@@ -14,6 +14,8 @@ import discordrpc.Updates;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -59,6 +61,7 @@ public class ConfigController implements Initializable{
 	//it will also set the appid to only accept numbers and if loaded is not null, it will leave it empty
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		displayUpdates.setDisable(false);
 		appID.textProperty().addListener(new ChangeListener<String>() {
 		    @Override
 		    public void changed(ObservableValue<? extends String> observable, String oldValue, 
@@ -67,6 +70,7 @@ public class ConfigController implements Initializable{
 		            appID.setText(newValue.replaceAll("[^\\d]", ""));
 		        }
 		    }
+		    
 		});
 		appID.setText(DiscordRP.apikey);
 		
@@ -76,14 +80,25 @@ public class ConfigController implements Initializable{
 			e.printStackTrace();
 		}
 		//add lister to check if the listview is changed :/
+		/*
 		displayUpdates.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Updates>() {
 			@Override
 			public void changed(ObservableValue<? extends Updates> arg0, Updates arg1, Updates arg2) {
-				showListConfig();
+				//showListConfig();
 				System.out.println(displayUpdates.getSelectionModel().getSelectedItem());
 			}
 			
-		});
+		}); */
+		displayUpdates.setOnMouseClicked(new EventHandler<Event>() {
+
+            @Override
+            public void handle(Event event) {
+               
+            	showListConfig();
+            	displayUpdates.setDisable(true);
+            }
+
+        });
 	}
 	//this will open up a new window and edit the arraylist
 	private void showListConfig() {
