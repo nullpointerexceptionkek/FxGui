@@ -22,6 +22,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class ConfigController implements Initializable{
@@ -77,10 +79,24 @@ public class ConfigController implements Initializable{
 		displayUpdates.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Updates>() {
 			@Override
 			public void changed(ObservableValue<? extends Updates> arg0, Updates arg1, Updates arg2) {
-				
+				showListConfig();
 				System.out.println(displayUpdates.getSelectionModel().getSelectedItem());
-			}	
+			}
+			
 		});
+	}
+	//this will open up a new window and edit the arraylist
+	private void showListConfig() {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setLocation(getClass().getResource("/application/EditListScript.fxml"));
+	        Scene scene = new Scene(fxmlLoader.load());
+	        Stage stage = new Stage();
+	        stage.setTitle("Config Editor");
+	        stage.setScene(scene);
+	        stage.show();
+	    } catch (IOException e) {
+	    }
 	}
 	
 	
