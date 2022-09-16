@@ -2,11 +2,18 @@ package application.Gui.config;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.NumberFormat;
+import java.text.ParsePosition;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 
 import application.Gui.config.ready.ConfigController;
 import discordrpc.Script;
 import discordrpc.Updates;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +25,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -95,8 +103,6 @@ public class EditListController extends ConfigController implements Initializabl
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
-
 	}
 	
 	public void setnumberInList(int numberInList) {
@@ -108,6 +114,8 @@ public class EditListController extends ConfigController implements Initializabl
 					new SpinnerValueFactory.IntegerSpinnerValueFactory(3, 300);
 			valueFactory.setValue((int)(Script.getTotalupdates().get(numberInList).getWait())/1000);
 			Wait.setValueFactory(valueFactory);
+			
+			
 		} catch (Exception e) {
 			
 		}

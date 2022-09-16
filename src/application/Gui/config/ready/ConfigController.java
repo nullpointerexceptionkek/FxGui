@@ -102,9 +102,11 @@ public class ConfigController implements Initializable{
 
             @Override
             public void handle(Event event) {
-            	showListConfig(displayUpdates.getSelectionModel().getSelectedIndex());
-            	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            	stage.close();
+            	if(!((displayUpdates.getSelectionModel().getSelectedIndex()) == -1)) {
+            		showListConfig(displayUpdates.getSelectionModel().getSelectedIndex());
+            		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            		stage.close();
+            	}
             }
 
         });
