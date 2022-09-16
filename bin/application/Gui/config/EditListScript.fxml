@@ -13,7 +13,7 @@
       <TextField fx:id="secondline" layoutX="116.0" layoutY="97.0" prefHeight="25.0" prefWidth="203.0" />
       <Button fx:id="SaveButton" layoutX="59.0" layoutY="142.0" mnemonicParsing="false" onAction="#saveChanges" prefHeight="25.0" prefWidth="89.0" text="Save" />
       <Button fx:id="CancelButton" layoutX="173.0" layoutY="142.0" mnemonicParsing="false" onAction="#cancelSaves" prefHeight="25.0" prefWidth="89.0" text="Cancel" />
-      <Spinner fx:id="Wait" editable="true" layoutX="14.0" layoutY="60.0" prefHeight="25.0" prefWidth="89.0" />
+      <Spinner fx:id="Wait" layoutX="14.0" layoutY="60.0" prefHeight="25.0" prefWidth="89.0" />
       <Label layoutX="14.0" layoutY="43.0" text="Delay (seconds)" />
       <Label layoutX="116.0" layoutY="43.0" text="First Line, Second line" />
       <Button fx:id="DeleteButton" layoutX="15.0" layoutY="97.0" mnemonicParsing="false" onAction="#deleteThisItem" prefHeight="25.0" prefWidth="89.0" text="Delete" />

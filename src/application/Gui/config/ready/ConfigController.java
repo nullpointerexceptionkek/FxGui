@@ -27,6 +27,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class ConfigController implements Initializable{
@@ -98,16 +100,22 @@ public class ConfigController implements Initializable{
 			}
 			
 		}); */
-		displayUpdates.setOnMouseClicked(new EventHandler<Event>() {
+		displayUpdates.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
-            @Override
-            public void handle(Event event) {
-            	if(!((displayUpdates.getSelectionModel().getSelectedIndex()) == -1)) {
-            		showListConfig(displayUpdates.getSelectionModel().getSelectedIndex());
-            		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            		stage.close();
-            	}
-            }
+
+			@Override
+			public void handle(MouseEvent event) {
+				if(event.getButton().equals(MouseButton.PRIMARY)){
+                    if(event.getClickCount() == 2){
+                    	if(!((displayUpdates.getSelectionModel().getSelectedIndex()) == -1)) {
+                    		showListConfig(displayUpdates.getSelectionModel().getSelectedIndex());
+                    		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    		stage.close();
+                    	}
+                    }
+                }
+				
+			}
 
         });
 	}
