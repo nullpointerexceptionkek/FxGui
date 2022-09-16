@@ -5,13 +5,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="334.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Gui.callbackscreen.CallBackController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="334.0" style="-fx-background-color: #2c2f33;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Gui.callbackscreen.CallBackController">
    <children>
-      <Label fx:id="titleLabel" alignment="CENTER" layoutX="50.0" layoutY="14.0" prefHeight="32.0" prefWidth="234.0" text="CallBack Launched!!!">
+      <Label fx:id="titleLabel" alignment="CENTER" layoutX="50.0" layoutY="14.0" prefHeight="32.0" prefWidth="234.0" text="CallBack Launched!!!" textFill="WHITE">
          <font>
             <Font size="20.0" />
          </font></Label>
       <Button fx:id="CloseCallBackButton" layoutX="116.0" layoutY="496.0" mnemonicParsing="false" onAction="#switchToConfig" text="Close call back" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="106.0" layoutY="59.0" prefHeight="18.0" prefWidth="123.0" text="Current displaying" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="106.0" layoutY="59.0" prefHeight="18.0" prefWidth="123.0" text="Current displaying" textFill="WHITE" />
    </children>
 </AnchorPane>
