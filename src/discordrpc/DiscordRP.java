@@ -31,17 +31,6 @@ public class DiscordRP {
 		
 		DiscordRPC.discordInitialize(apikey, handlers, true);
 		
-		new Thread("Discord RPC Callback"){
-			
-			@Override
-			public void run() {
-
-				while(LaunchManager.isRunning) {
-					DiscordRPC.discordRunCallbacks();
-				}
-			}
-		}.start();
-		
 	}
 	
 	
@@ -69,14 +58,6 @@ public class DiscordRP {
 		String loaded = FileManager.readFromJson(new File(FileManager.getROOT_DIR(),"key.json"),String.class);
 		apikey = loaded;
 		System.out.println(loaded);
-		
-		/*
-		if(loaded == null) {
-			loaded = "1002317125899272332";
-			apikey = loaded;
-			saveKeyToFile();	
-		}
-		*/
 		
 		
 		return loaded;

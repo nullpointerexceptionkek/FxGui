@@ -4,8 +4,9 @@ import discordrpc.DiscordRP;
 import discordrpc.UpdateManager;
 import discordrpc.Updates;
 import jsonreader.FileManager;
+import net.arikia.dev.drpc.DiscordRPC;
 
-public class LaunchManager extends Thread{
+public class LaunchManager {
 	
 	public static boolean isRunning = false;
 	
@@ -23,9 +24,23 @@ public class LaunchManager extends Thread{
 	
 	public static void initCallBack() {
 		discordRP.LaunchReadyCallBack();
-		LaunchManager runloop = new LaunchManager();
-		runloop.start();
 		isRunning = true;
+		new Thread("RunLoop") {
+			@Override
+			public void run() {
+				while(isRunning) {
+					for(int i = 0; i< upm.getUpdates().getSize(); i++) {
+						if(!isRunning) 
+							return;
+						System.out.println("im runing");
+						excuteUpdate(upm.getUpdates().getUpdates(i));
+						DiscordRPC.discordRunCallbacks();
+					}
+					
+				}
+			}
+		}.start();
+		
 	}
 	
 	public static void closeCallBack() {
@@ -35,22 +50,9 @@ public class LaunchManager extends Thread{
 	
 	
 	
-	@Override
-	public void run() {
-		
-		while(isRunning) {
-			
-			for(int i = 0; i< upm.getUpdates().getSize(); i++) {
-				if(!isRunning)return;
-				excuteUpdate(upm.getUpdates().getUpdates(i));
-			}
-			
-		}
-		
-		
-	}
 	
-	private void excuteUpdate(Updates update) {
+	
+	private static void excuteUpdate(Updates update) {
 		System.out.println(update);
 		if(update.getWait() == -1) {
 			discordRP.update(update.getFl(), update.getSl());
@@ -58,7 +60,6 @@ public class LaunchManager extends Thread{
 		}
 		
 		try {
-			currentThread();
 			Thread.sleep((update.getWait() <= 3000 )? 3000 : update.getWait());
 			discordRP.update(update.getFl(), update.getSl());
 			
