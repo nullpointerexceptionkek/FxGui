@@ -67,8 +67,11 @@ public class ConfigController implements Initializable{
 		//Parent root = FXMLLoader.load(getClass().getResource("/application/Gui/callbackscreen/CallBack.fxml"));
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/LoadingScreen/LoadingScreen.fxml"));
 		Parent root = loader.load();
+		LoadingController lc = loader.getController();
+		lc.toNewScene(100,"callback");
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		Scene scene = callbackButton.getScene();
+		
 		
 		root.translateYProperty().set(scene.getHeight());
 		stackPane.getChildren().add(root);
@@ -82,8 +85,7 @@ public class ConfigController implements Initializable{
 		});
 		timeline.play();
 		
-		LoadingController lc = loader.getController();
-		lc.toNewScene(0,"callback");
+		
 		
 
 	}
