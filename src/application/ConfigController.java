@@ -22,10 +22,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class ConfigController implements Initializable{
@@ -36,8 +35,11 @@ public class ConfigController implements Initializable{
 	@FXML
 	private TextField appID;
 	@FXML
-	private ListView<Updates> displayUpdates;
+	protected ListView<Updates> displayUpdates;
 	private ArrayList<Updates> u;
+	
+	@FXML
+	private Button callbackButton;
 	
 	public void switchToCallBack(ActionEvent event) throws IOException{
 		//update DiscordRP app id and save it to the file
@@ -61,7 +63,6 @@ public class ConfigController implements Initializable{
 	//it will also set the appid to only accept numbers and if loaded is not null, it will leave it empty
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		displayUpdates.setDisable(false);
 		appID.textProperty().addListener(new ChangeListener<String>() {
 		    @Override
 		    public void changed(ObservableValue<? extends String> observable, String oldValue, 
@@ -93,19 +94,22 @@ public class ConfigController implements Initializable{
 
             @Override
             public void handle(Event event) {
-               
-            	showListConfig();
-            	displayUpdates.setDisable(true);
+            	showListConfig(displayUpdates.getSelectionModel().getSelectedIndex());
+            	stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            	stage.close();
             }
 
         });
 	}
 	//this will open up a new window and edit the arraylist
-	private void showListConfig() {
+	private void showListConfig(int numberInList) {
 		try {
-			FXMLLoader fxmlLoader = new FXMLLoader();
-			fxmlLoader.setLocation(getClass().getResource("/application/EditListScript.fxml"));
-	        Scene scene = new Scene(fxmlLoader.load());
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/EditListScript.fxml"));
+			Parent root = loader.load();
+			EditListController ec = loader.getController();
+			//loader.setController(ec);
+			ec.setnumberInList(numberInList);
+	        Scene scene = new Scene(root);
 	        Stage stage = new Stage();
 	        stage.setTitle("Config Editor");
 	        stage.setScene(scene);
@@ -113,6 +117,8 @@ public class ConfigController implements Initializable{
 	    } catch (IOException e) {
 	    }
 	}
+	
+	
 	
 	
 }

@@ -27,6 +27,9 @@ public class Script {
 		}
 
 	}
+	public static void setUpdates(Updates u, int index) {
+		totalupdates.set(index, u);
+	}
 	
 	public void removeUpdates(int list) {
 		totalupdates.remove(list);
