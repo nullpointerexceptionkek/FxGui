@@ -1,4 +1,4 @@
-package application;
+package application.Gui.config.ready;
 
 
 
@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.ResourceBundle;
 
+import application.LaunchManager;
+import application.Gui.config.EditListController;
 import discordrpc.DiscordRP;
 import discordrpc.Script;
 import discordrpc.Updates;
@@ -47,7 +49,7 @@ public class ConfigController implements Initializable{
 		DiscordRP.apikey = DiscordAppID;
 		DiscordRP.saveKeyToFile();
 		//System.out.println(DiscordAppID);
-		root = FXMLLoader.load(getClass().getResource("/application/CallBack.fxml"));
+		root = FXMLLoader.load(getClass().getResource("/application/Gui/callbackscreen/CallBack.fxml"));
 		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		scene = new Scene(root);
 		stage.setScene(scene);
@@ -110,7 +112,7 @@ public class ConfigController implements Initializable{
 	//this will open up a new window and edit the arraylist
 	private void showListConfig(int numberInList) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/EditListScript.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/EditListScript.fxml"));
 			Parent root = loader.load();
 			EditListController ec = loader.getController();
 			//loader.setController(ec);

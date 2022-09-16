@@ -1,9 +1,10 @@
-package application;
+package application.Gui.config;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Gui.config.ready.ConfigController;
 import discordrpc.Script;
 import discordrpc.Updates;
 import javafx.event.ActionEvent;
@@ -51,7 +52,7 @@ public class EditListController extends ConfigController implements Initializabl
 	public void cancelSaves(ActionEvent event) throws IOException {
 		stage = (Stage) scenePane.getScene().getWindow();
 		stage.close();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/ReadyConfig.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
 		Parent root = loader.load();
 		ConfigController cc = loader.getController();
 		//cc.setDisable(false);
@@ -66,7 +67,7 @@ public class EditListController extends ConfigController implements Initializabl
 		Script.setUpdates(new Updates((long)(Wait.getValue()*1000),firstline.getText(),secondline.getText()), numberInList);
 		stage = (Stage) scenePane.getScene().getWindow();
 		stage.close();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/ReadyConfig.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
 		Parent root = loader.load();
 		ConfigController cc = loader.getController();
 		//cc.setDisable(false);
@@ -81,7 +82,7 @@ public class EditListController extends ConfigController implements Initializabl
 		Script.getTotalupdates().remove(numberInList);
 		stage = (Stage) scenePane.getScene().getWindow();
 		stage.close();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/ReadyConfig.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
 		Parent root = loader.load();
 		ConfigController cc = loader.getController();
 		//cc.setDisable(false);

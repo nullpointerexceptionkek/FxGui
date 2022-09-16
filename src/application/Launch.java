@@ -17,7 +17,7 @@ public class Launch extends Application {
 	public void start(Stage primaryStage) {
 		try {
 			LaunchManager.init();
-			Parent root = FXMLLoader.load(getClass().getResource("/application/ReadyConfig.fxml"));
+			Parent root = FXMLLoader.load(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
 			Scene scene = new Scene(root);
 			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setTitle("Custom Discord RPC");
@@ -30,7 +30,7 @@ public class Launch extends Application {
 			String sStackTrace = sw.toString(); // stack trace as a string
 			System.out.println(sStackTrace);
 			try {
-				Parent exc = FXMLLoader.load(getClass().getResource("/application/AppErrorScreen.fxml"));
+				Parent exc = FXMLLoader.load(getClass().getResource("/application/Gui/errorScreen/AppErrorScreen.fxml"));
 				Scene sceneexc = new Scene(exc);
 				primaryStage.setScene(sceneexc);
 				primaryStage.show();
