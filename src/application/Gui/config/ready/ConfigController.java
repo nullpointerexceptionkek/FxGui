@@ -5,7 +5,6 @@ package application.Gui.config.ready;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.ResourceBundle;
 
 import application.LaunchManager;
@@ -13,10 +12,13 @@ import application.Gui.config.EditListController;
 import discordrpc.DiscordRP;
 import discordrpc.Script;
 import discordrpc.Updates;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,37 +31,55 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class ConfigController implements Initializable{
 	
-	private Stage stage;
-	private Scene scene;
-	private Parent root;
 	@FXML
 	private TextField appID;
 	@FXML
 	protected ListView<Updates> displayUpdates;
-	private ArrayList<Updates> u;
 	
 	@FXML
 	private Button callbackButton;
+	
+	@FXML
+	private AnchorPane Anchorroot;
+	
+	@FXML
+	private StackPane stackPane;
 	
 	public void switchToCallBack(ActionEvent event) throws IOException{
 		//update DiscordRP app id and save it to the file
 		String DiscordAppID = appID.getText();
 		DiscordRP.apikey = DiscordAppID;
 		DiscordRP.saveKeyToFile();
-		//System.out.println(DiscordAppID);
-		root = FXMLLoader.load(getClass().getResource("/application/Gui/callbackscreen/CallBack.fxml"));
-		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		scene = new Scene(root);
-		stage.setScene(scene);
-		stage.show();
+		
 		System.out.println(displayUpdates.getItems());
-		u = new ArrayList<>(displayUpdates.getItems());
+		ArrayList<Updates> u = new ArrayList<>(displayUpdates.getItems());
 		Script.setTotalupdates(u); 
+		LaunchManager.saveScripToFile();
 		LaunchManager.initCallBack();
+		
+		Parent root = FXMLLoader.load(getClass().getResource("/application/Gui/callbackscreen/CallBack.fxml"));
+		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		Scene scene = callbackButton.getScene();
+		
+		root.translateYProperty().set(scene.getHeight());
+		stackPane.getChildren().add(root);
+		
+		Timeline timeline = new Timeline();
+		KeyValue keyValue = new KeyValue(root.translateYProperty(), 0,Interpolator.EASE_IN);
+		KeyFrame keyFrame = new KeyFrame(Duration.seconds(3), keyValue);
+		timeline.getKeyFrames().add(keyFrame);
+		timeline.setOnFinished(event1 -> {
+			stackPane.getChildren().remove(Anchorroot);
+		});
+		timeline.play();
+
 	}
 	
 	public void addnewitem() {
@@ -109,7 +129,7 @@ public class ConfigController implements Initializable{
                     if(event.getClickCount() == 2){
                     	if(!((displayUpdates.getSelectionModel().getSelectedIndex()) == -1)) {
                     		showListConfig(displayUpdates.getSelectionModel().getSelectedIndex());
-                    		stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     		stage.close();
                     	}
                     }

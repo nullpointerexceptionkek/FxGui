@@ -5,18 +5,25 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="334.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Gui.config.ready.ConfigController">
+
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Gui.config.ready.ConfigController">
    <children>
-      <Label fx:id="titleLabel" alignment="CENTER" layoutX="50.0" layoutY="14.0" prefHeight="32.0" prefWidth="234.0" text="Custom Discord RP">
-         <font>
-            <Font size="20.0" />
-         </font></Label>
-      <Button fx:id="callbackButton" layoutX="116.0" layoutY="501.0" mnemonicParsing="false" onAction="#switchToCallBack" text="Launch Call Back" />
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="106.0" layoutY="72.0" prefHeight="18.0" prefWidth="123.0" text="Application ID" />
-      <TextField fx:id="appID" layoutX="67.0" layoutY="103.0" prefHeight="26.0" prefWidth="202.0" promptText="Enter Discord Application ID" />
-      <ListView fx:id="displayUpdates" editable="true" layoutX="68.0" layoutY="148.0" prefHeight="190.0" prefWidth="200.0" />
-      <Button layoutX="115.0" layoutY="352.0" mnemonicParsing="false" onAction="#addnewitem" prefHeight="25.0" prefWidth="105.0" text="Add new item" />
+      <AnchorPane fx:id="Anchorroot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="334.0">
+         <children>
+            <Label fx:id="titleLabel" alignment="CENTER" layoutX="50.0" layoutY="14.0" prefHeight="32.0" prefWidth="234.0" text="Custom Discord RP">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="callbackButton" layoutX="116.0" layoutY="501.0" mnemonicParsing="false" onAction="#switchToCallBack" text="Launch Call Back" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="106.0" layoutY="72.0" prefHeight="18.0" prefWidth="123.0" text="Application ID" />
+            <TextField fx:id="appID" layoutX="67.0" layoutY="103.0" prefHeight="26.0" prefWidth="202.0" promptText="Enter Discord Application ID" />
+            <ListView fx:id="displayUpdates" editable="true" layoutX="68.0" layoutY="148.0" prefHeight="190.0" prefWidth="200.0" />
+            <Button layoutX="115.0" layoutY="352.0" mnemonicParsing="false" onAction="#addnewitem" prefHeight="25.0" prefWidth="105.0" text="Add new item" />
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

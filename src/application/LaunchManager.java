@@ -79,6 +79,10 @@ public class LaunchManager {
 		System.exit(0);
 	}
 	
+	public static void saveScripToFile() {
+		upm.saveScriptToFile();
+	}
+	
 	
 	
 
