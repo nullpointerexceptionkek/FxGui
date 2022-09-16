@@ -39,6 +39,9 @@ public class EditListController extends ConfigController implements Initializabl
 	private Button SaveButton;
 	
 	@FXML
+	private Button DeleteButton;
+	
+	@FXML
 	private AnchorPane scenePane;
 	
 	private int numberInList = -1;
@@ -60,6 +63,7 @@ public class EditListController extends ConfigController implements Initializabl
 	}
 	
 	public void saveChanges(ActionEvent event) throws IOException {
+		Script.setUpdates(new Updates((long)(Wait.getValue()*1000),firstline.getText(),secondline.getText()), numberInList);
 		stage = (Stage) scenePane.getScene().getWindow();
 		stage.close();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/ReadyConfig.fxml"));
@@ -70,7 +74,21 @@ public class EditListController extends ConfigController implements Initializabl
 		stage.setTitle("Custom Discord RP" );
 		stage.setScene(new Scene(root));
 		stage.show(); 
-		Script.setUpdates(new Updates((long)(Wait.getValue()*1000),firstline.getText(),secondline.getText()), numberInList);
+		numberInList = -1;
+	}
+	
+	public void deleteThisItem(ActionEvent event) throws IOException {
+		Script.getTotalupdates().remove(numberInList);
+		stage = (Stage) scenePane.getScene().getWindow();
+		stage.close();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/ReadyConfig.fxml"));
+		Parent root = loader.load();
+		ConfigController cc = loader.getController();
+		//cc.setDisable(false);
+		stage = new Stage();
+		stage.setTitle("Custom Discord RP" );
+		stage.setScene(new Scene(root));
+		stage.show(); 
 		numberInList = -1;
 	}
 	

@@ -57,6 +57,12 @@ public class ConfigController implements Initializable{
 		Script.setTotalupdates(u); 
 		LaunchManager.initCallBack();
 	}
+	
+	public void addnewitem() {
+		Script.addUpdates(new Updates(3000,"First line", "Second line"));
+		displayUpdates.getItems().clear();		
+		displayUpdates.getItems().addAll(Script.getTotalupdates());	
+	}
 
 	
 	//this file will init and set the Listview to the total updates that was read from Json

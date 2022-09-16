@@ -13,9 +13,10 @@
          <font>
             <Font size="20.0" />
          </font></Label>
-      <Button fx:id="callbackButton" layoutX="110.0" layoutY="485.0" mnemonicParsing="false" onAction="#switchToCallBack" text="Launch Call Back" />
+      <Button fx:id="callbackButton" layoutX="116.0" layoutY="501.0" mnemonicParsing="false" onAction="#switchToCallBack" text="Launch Call Back" />
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="106.0" layoutY="72.0" prefHeight="18.0" prefWidth="123.0" text="Application ID" />
       <TextField fx:id="appID" layoutX="67.0" layoutY="103.0" prefHeight="26.0" prefWidth="202.0" promptText="Enter Discord Application ID" />
       <ListView fx:id="displayUpdates" editable="true" layoutX="68.0" layoutY="148.0" prefHeight="190.0" prefWidth="200.0" />
+      <Button layoutX="115.0" layoutY="352.0" mnemonicParsing="false" onAction="#addnewitem" prefHeight="25.0" prefWidth="105.0" text="Add new item" />
    </children>
 </AnchorPane>
