@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.LaunchManager;
+import application.Gui.LoadingScreen.LoadingController;
 import application.Gui.config.EditListController;
 import discordrpc.DiscordRP;
 import discordrpc.Script;
@@ -52,7 +53,7 @@ public class ConfigController implements Initializable{
 	@FXML
 	private StackPane stackPane;
 	
-	public void switchToCallBack(ActionEvent event) throws IOException{
+	public void switchToCallBack(ActionEvent event) throws IOException, InterruptedException{
 		//update DiscordRP app id and save it to the file
 		String DiscordAppID = appID.getText();
 		DiscordRP.apikey = DiscordAppID;
@@ -63,8 +64,9 @@ public class ConfigController implements Initializable{
 		Script.setTotalupdates(u); 
 		LaunchManager.saveScripToFile();
 		LaunchManager.initCallBack();
-		
-		Parent root = FXMLLoader.load(getClass().getResource("/application/Gui/callbackscreen/CallBack.fxml"));
+		//Parent root = FXMLLoader.load(getClass().getResource("/application/Gui/callbackscreen/CallBack.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/LoadingScreen/LoadingScreen.fxml"));
+		Parent root = loader.load();
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		Scene scene = callbackButton.getScene();
 		
@@ -73,12 +75,16 @@ public class ConfigController implements Initializable{
 		
 		Timeline timeline = new Timeline();
 		KeyValue keyValue = new KeyValue(root.translateYProperty(), 0,Interpolator.EASE_IN);
-		KeyFrame keyFrame = new KeyFrame(Duration.seconds(3), keyValue);
+		KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), keyValue);
 		timeline.getKeyFrames().add(keyFrame);
 		timeline.setOnFinished(event1 -> {
 			stackPane.getChildren().remove(Anchorroot);
 		});
 		timeline.play();
+		
+		LoadingController lc = loader.getController();
+		lc.toNewScene(0,"callback");
+		
 
 	}
 	

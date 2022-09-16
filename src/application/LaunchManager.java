@@ -32,7 +32,6 @@ public class LaunchManager {
 					for(int i = 0; i< upm.getUpdates().getSize(); i++) {
 						if(!isRunning) 
 							return;
-						System.out.println("im runing");
 						excuteUpdate(upm.getUpdates().getUpdates(i));
 						DiscordRPC.discordRunCallbacks();
 					}
