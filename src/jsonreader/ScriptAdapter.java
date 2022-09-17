@@ -20,7 +20,8 @@ public class ScriptAdapter extends TypeAdapter<Script>{
 	         return null;
 	         }
 		try {
-			Script tu = new Script(true);
+			Script tu = new Script();
+			Script.setTimestampmode(reader.nextString());
 			String v = reader.nextString();
 			String[] parts = v.split("-");
 			for(String u : parts) {
@@ -29,7 +30,7 @@ public class ScriptAdapter extends TypeAdapter<Script>{
 				String image = uParts[1];
 				String F1 = uParts[2];
 			    String S1 = uParts[3];
-			    tu.addUpdates(new Updates(wait,image, F1, S1));
+			    Script.addUpdates(new Updates(wait,image, F1, S1));
 			}
 			return tu;
 		} catch (Exception e) {
@@ -46,7 +47,7 @@ public class ScriptAdapter extends TypeAdapter<Script>{
 			writter.nullValue();
 			return;
 		}
-
+		writter.value(Script.getTimestampmode());
 		writter.value(tu.toString());
 
 		

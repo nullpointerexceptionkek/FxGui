@@ -29,6 +29,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -48,12 +49,30 @@ public class ConfigController implements Initializable{
 	private Button callbackButton;
 	
 	@FXML
+	private RadioButton applaunch, none, local, custom;
+	
+	@FXML
 	private AnchorPane Anchorroot;
 	
 	@FXML
 	private StackPane stackPane;
 	
 	private int currentCount;
+	
+	public void getTimeStampMode(ActionEvent event){
+		if(applaunch.isSelected()) {
+			Script.setTimestampmode("Default");
+		} 
+		else if(none.isSelected()){
+			Script.setTimestampmode("None");
+		}
+		else if(local.isSelected()){
+			Script.setTimestampmode("Local time");
+		}
+		else if(custom.isSelected()){
+			Script.setTimestampmode("Custom");
+		}
+	}
 	
 	public void switchToCallBack(ActionEvent event) throws IOException, InterruptedException{
 		//update DiscordRP app id and save it to the file
@@ -117,24 +136,39 @@ public class ConfigController implements Initializable{
 		});
 		appID.setText(DiscordRP.apikey);
 		
+		//set the timestamp mode
+		switch(Script.getTimestampmode()) {
+			case "Default":
+				applaunch.setSelected(true);
+				break;
+			
+			case "None":
+				none.setSelected(true);
+				break;
+				
+			case "Local time":
+				local.setSelected(true);
+				break;
+			
+			case "Custom":
+				custom.setSelected(true);
+				break;
+			default:
+				applaunch.setSelected(true);
+				Script.setTimestampmode("Default");
+		
+		}
+		
+		
+		
 		try {
 			displayUpdates.getItems().addAll(Script.getTotalupdates());	
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		//add lister to check if the listview is changed :/
-		/*
-		displayUpdates.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Updates>() {
-			@Override
-			public void changed(ObservableValue<? extends Updates> arg0, Updates arg1, Updates arg2) {
-				//showListConfig();
-				System.out.println(displayUpdates.getSelectionModel().getSelectedItem());
-			}
-			
-		}); */
+		
+		//check if the list is double clicked
 		displayUpdates.setOnMouseClicked(new EventHandler<MouseEvent>() {
-			
-
 			@Override
 			public void handle(MouseEvent event) {
 				if(event.getButton().equals(MouseButton.PRIMARY)){
@@ -168,6 +202,8 @@ public class ConfigController implements Initializable{
 	    	e.printStackTrace();
 	    }
 	}
+	
+	
 	
 	
 	

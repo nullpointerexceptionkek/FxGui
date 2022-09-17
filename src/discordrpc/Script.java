@@ -5,10 +5,18 @@ import java.util.ArrayList;
 public class Script {
 	private static ArrayList<Updates> totalupdates;
 	
-	public Script(boolean createnew) {
+	private static String timestampmode;
+	
+	public Script() {
 		totalupdates = new ArrayList<Updates>();
-		if(!createnew) return;
-		//totalupdates.add(new Updates(3000,"This is the default message","if the config cannot be loaded"));
+	}
+	
+	public static void setTimestampmode(String timestampmode) {
+		Script.timestampmode = timestampmode;
+	}
+	
+	public static String getTimestampmode() {
+		return timestampmode;
 	}
 	
 	
@@ -46,7 +54,7 @@ public class Script {
 	}
 	
 	public static Script fromTotalUpdates() {
-		return new Script(false);
+		return new Script();
 	}
 	
 	@Override
