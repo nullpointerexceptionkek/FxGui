@@ -22,10 +22,11 @@ public class UpdatesAdapter extends TypeAdapter<Updates>{
 		String[] parts = v.split(",");
 		
 		long wait = Long.parseLong(parts[0]);
-	    String F1 = parts[1];
-	    String S1 = parts[2];
+		String image = parts[1];
+		String F1 = parts[2];
+	    String S1 = parts[3];
 	    
-		return new Updates(wait, F1, S1);
+		return new Updates(wait, image, F1, S1);
 		
 		
 	}

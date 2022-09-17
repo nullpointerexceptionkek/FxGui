@@ -26,9 +26,10 @@ public class ScriptAdapter extends TypeAdapter<Script>{
 			for(String u : parts) {
 				String[] uParts = u.split(", ");
 				long wait = Long.parseLong(uParts[0]);
-			    String F1 = uParts[1];
-			    String S1 = uParts[2];
-			    tu.addUpdates(new Updates(wait, F1, S1));
+				String image = uParts[1];
+				String F1 = uParts[2];
+			    String S1 = uParts[3];
+			    tu.addUpdates(new Updates(wait,image, F1, S1));
 			}
 			return tu;
 		} catch (Exception e) {

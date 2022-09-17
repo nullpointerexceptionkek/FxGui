@@ -91,7 +91,7 @@ public class ConfigController implements Initializable{
 	}
 	
 	public void addnewitem() {
-		Script.addUpdates(new Updates(3000,"First line", "Second line"));
+		Script.addUpdates(new Updates(3000, null, "First line", "Second line"));
 		displayUpdates.getItems().clear();		
 		displayUpdates.getItems().addAll(Script.getTotalupdates());	
 	}

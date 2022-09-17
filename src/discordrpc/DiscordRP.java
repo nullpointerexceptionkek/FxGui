@@ -43,9 +43,10 @@ public class DiscordRP {
 	}
 	
 
-	public void update(String firstLine, String secondLine) {
+	public void update(String image, String firstLine, String secondLine) {
 		DiscordRichPresence.Builder presence = new DiscordRichPresence.Builder(secondLine);
-		presence.setBigImage("large", "");
+		if(image != null)
+			presence.setBigImage(image, "");
 		presence.setDetails(firstLine);
 		presence.setStartTimestamps(created);
 		//presence.setSmallImage("large", "");

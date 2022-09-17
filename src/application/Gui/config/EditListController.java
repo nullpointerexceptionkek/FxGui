@@ -22,6 +22,8 @@ import javafx.stage.Stage;
 
 public class EditListController extends ConfigController implements Initializable{
 	
+	@FXML
+	private TextField image;
 	
 	@FXML
 	private TextField firstline;
@@ -63,7 +65,7 @@ public class EditListController extends ConfigController implements Initializabl
 	}
 	
 	public void saveChanges(ActionEvent event) throws IOException {
-		Script.setUpdates(new Updates((long)(Wait.getValue()*1000),firstline.getText(),secondline.getText()), numberInList);
+		Script.setUpdates(new Updates((long)(Wait.getValue()*1000),image.getText(),firstline.getText(),secondline.getText()), numberInList);
 		stage = (Stage) scenePane.getScene().getWindow();
 		stage.close();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
@@ -99,6 +101,7 @@ public class EditListController extends ConfigController implements Initializabl
 	public void setnumberInList(int numberInList) {
 		this.numberInList = numberInList;
 		try {
+			image.setText(Script.getTotalupdates().get(numberInList).getImage());
 			firstline.setText(Script.getTotalupdates().get(numberInList).getFl());
 			secondline.setText(Script.getTotalupdates().get(numberInList).getSl());
 			SpinnerValueFactory<Integer> valueFactory = 
