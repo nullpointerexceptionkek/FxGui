@@ -53,6 +53,8 @@ public class ConfigController implements Initializable{
 	@FXML
 	private StackPane stackPane;
 	
+	private int currentCount;
+	
 	public void switchToCallBack(ActionEvent event) throws IOException, InterruptedException{
 		//update DiscordRP app id and save it to the file
 		String DiscordAppID = appID.getText();
@@ -91,7 +93,8 @@ public class ConfigController implements Initializable{
 	}
 	
 	public void addnewitem() {
-		Script.addUpdates(new Updates(3000, null, "First line", "Second line"));
+		currentCount++;
+		Script.addUpdates(new Updates(50, String.valueOf(currentCount), "Playing ", "Bad Apple"));
 		displayUpdates.getItems().clear();		
 		displayUpdates.getItems().addAll(Script.getTotalupdates());	
 	}
@@ -101,6 +104,7 @@ public class ConfigController implements Initializable{
 	//it will also set the appid to only accept numbers and if loaded is not null, it will leave it empty
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		currentCount = Script.getTotalupdates().size();
 		appID.textProperty().addListener(new ChangeListener<String>() {
 		    @Override
 		    public void changed(ObservableValue<? extends String> observable, String oldValue, 
@@ -129,7 +133,7 @@ public class ConfigController implements Initializable{
 			
 		}); */
 		displayUpdates.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
+			
 
 			@Override
 			public void handle(MouseEvent event) {
@@ -161,6 +165,7 @@ public class ConfigController implements Initializable{
 	        stage.setScene(scene);
 	        stage.show();
 	    } catch (IOException e) {
+	    	e.printStackTrace();
 	    }
 	}
 	

@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import application.Gui.config.ready.ConfigController;
 import discordrpc.Script;
 import discordrpc.Updates;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,7 +34,7 @@ public class EditListController extends ConfigController implements Initializabl
 	private TextField secondline;
 	
 	@FXML
-	private Spinner<Integer> Wait;
+	private TextField Wait;
 	
 	@FXML
 	private Button CancelButton;
@@ -65,7 +67,7 @@ public class EditListController extends ConfigController implements Initializabl
 	}
 	
 	public void saveChanges(ActionEvent event) throws IOException {
-		Script.setUpdates(new Updates((long)(Wait.getValue()*1000),image.getText(),firstline.getText(),secondline.getText()), numberInList);
+		Script.setUpdates(new Updates(Long.parseLong(Wait.getText()),image.getText(),firstline.getText(),secondline.getText()), numberInList);
 		stage = (Stage) scenePane.getScene().getWindow();
 		stage.close();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
@@ -96,23 +98,25 @@ public class EditListController extends ConfigController implements Initializabl
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		Wait.textProperty().addListener(new ChangeListener<String>() {
+		    @Override
+		    public void changed(ObservableValue<? extends String> observable, String oldValue, 
+		        String newValue) {
+		        if (!newValue.matches("\\d*")) {
+		            Wait.setText(newValue.replaceAll("[^\\d]", ""));
+		        }
+		    }
+		    
+		});
 	}
 	
 	public void setnumberInList(int numberInList) {
 		this.numberInList = numberInList;
-		try {
-			image.setText(Script.getTotalupdates().get(numberInList).getImage());
-			firstline.setText(Script.getTotalupdates().get(numberInList).getFl());
-			secondline.setText(Script.getTotalupdates().get(numberInList).getSl());
-			SpinnerValueFactory<Integer> valueFactory = 
-					new SpinnerValueFactory.IntegerSpinnerValueFactory(3, 300);
-			valueFactory.setValue((int)(Script.getTotalupdates().get(numberInList).getWait())/1000);
-			Wait.setValueFactory(valueFactory);
+		Wait.setText(String.valueOf(Script.getTotalupdates().get(numberInList).getWait()));
+		image.setText(Script.getTotalupdates().get(numberInList).getImage());
+		firstline.setText(Script.getTotalupdates().get(numberInList).getFl());
+		secondline.setText(Script.getTotalupdates().get(numberInList).getSl());
 			
-			
-		} catch (Exception e) {
-			
-		}
 	}
 
 

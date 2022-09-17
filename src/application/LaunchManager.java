@@ -52,14 +52,15 @@ public class LaunchManager {
 	
 	
 	private static void excuteUpdate(Updates update) {
-		System.out.println(update);
+		System.out.println("Sented Update Request, trans: " + update);
 		if(update.getWait() == -1) {
 			discordRP.update(update.getImage(),update.getFl(), update.getSl());
 			return;
 		}
 		
 		try {
-			Thread.sleep((update.getWait() <= 3000 )? 3000 : update.getWait());
+			//Thread.sleep((update.getWait() <= 3000 )? 3000 : update.getWait());
+			Thread.sleep(update.getWait());
 			discordRP.update(update.getImage(),update.getFl(), update.getSl());
 			
 		} catch (InterruptedException e) {
