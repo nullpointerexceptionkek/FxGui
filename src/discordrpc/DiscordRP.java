@@ -14,12 +14,16 @@ public class DiscordRP {
 	
 	private long created = -1;
 	
+	private boolean useStartTimeStamp = true;
+	
 	public static String apikey;
 	
 	
 	public void LaunchReadyCallBack(){
+		Calendar calendar = Calendar.getInstance();
 		switch(Script.getTimestampmode()) {
 		case "Default":
+			useStartTimeStamp = true;
 			this.created = System.currentTimeMillis();
 			break;
 		
@@ -28,18 +32,21 @@ public class DiscordRP {
 			break;
 			
 		case "Local time":
-			
-			Calendar calendar = Calendar.getInstance();
+			useStartTimeStamp = true;
 			calendar.set(Calendar.HOUR_OF_DAY, 0);
 	        calendar.set(Calendar.MINUTE, 0);
 	        calendar.set(Calendar.SECOND, 0);
 	        calendar.set(Calendar.MILLISECOND, 0);
 			this.created = calendar.getTimeInMillis();
-			System.out.println(created);
 			break;
 		
 		case "Custom":
-			this.created = System.currentTimeMillis();
+			useStartTimeStamp = false;
+			calendar.set(Calendar.HOUR_OF_DAY, 24);
+	        calendar.set(Calendar.MINUTE, 0);
+	        calendar.set(Calendar.SECOND, 0);
+	        calendar.set(Calendar.MILLISECOND, 0);
+			this.created = calendar.getTimeInMillis();
 			break;
 		}
 		
@@ -73,8 +80,15 @@ public class DiscordRP {
 		if(image != null)
 			presence.setBigImage(image, "");
 		presence.setDetails(firstLine);
-		if(created != -1)
-			presence.setStartTimestamps(created);
+		if(created != -1) {
+			if(useStartTimeStamp) {
+				presence.setStartTimestamps(created);
+			} 
+			else {
+				presence.setEndTimestamp(created);
+			}
+		}
+			
 		//presence.setSmallImage("large", "");
 		//presence.setParty("party", 2, 3);
 		DiscordRPC.discordUpdatePresence(presence.build());
