@@ -51,12 +51,12 @@ public class Launch extends Application {
 
 		    try {
 		        ss = new ServerSocket(1044);
+		        launch(args);
 		    } catch (IOException e) {
 		        System.err.println("Application already running!");
 		        System.exit(-1);
 		    }
 		
-		launch(args);
 	}
 	
 	@Override
