@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -19,5 +20,6 @@
       <Label layoutX="121.0" layoutY="101.0" text="Second line" />
       <Label layoutX="14.0" layoutY="101.0" text="Image" />
       <TextField fx:id="Wait" layoutX="14.0" layoutY="60.0" prefHeight="25.0" prefWidth="89.0" />
+      <TextArea fx:id="warning" editable="false" layoutX="12.0" layoutY="153.0" prefHeight="63.0" prefWidth="308.0" text="Warning: the rate limit of the update api is 15 &#10;second per update. It is recommanded to set the&#10;delay more than 1600ms." />
    </children>
 </AnchorPane>
