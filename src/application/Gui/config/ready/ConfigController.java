@@ -76,6 +76,7 @@ public class ConfigController implements Initializable{
 	
 	public void switchToCallBack(ActionEvent event) throws IOException, InterruptedException{
 		//update DiscordRP app id and save it to the file
+		if(displayUpdates.getItems().size() < 1) return;
 		String DiscordAppID = appID.getText();
 		DiscordRP.apikey = DiscordAppID;
 		DiscordRP.saveKeyToFile();
@@ -113,7 +114,9 @@ public class ConfigController implements Initializable{
 	
 	public void addnewitem() {
 		currentCount++;
-		Script.addUpdates(new Updates(Script.getTotalupdates().get((currentCount< 2 )? 0 : currentCount-2).getWait(), String.valueOf(currentCount), "First line " + currentCount, "Second line" + currentCount));
+		if(Script.getTotalupdates().size()>0)
+			Script.addUpdates(new Updates((Script.getTotalupdates().get((currentCount< 2 )? 0 : currentCount-2).getWait()), String.valueOf(currentCount), "First line " + currentCount, "Second line " + currentCount));
+		else Script.addUpdates(new Updates(16000, String.valueOf(currentCount), "First line " + currentCount, "Second line " + currentCount));
 		displayUpdates.getItems().clear();		
 		displayUpdates.getItems().addAll(Script.getTotalupdates());	
 	}

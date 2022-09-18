@@ -28,6 +28,13 @@ public class LaunchManager {
 		new Thread("RunLoop") {
 			@Override
 			public void run() {
+				if(upm.getUpdates().getSize()==1) {
+					excuteUpdate(upm.getUpdates().getUpdates(0));
+					DiscordRPC.discordRunCallbacks();
+					return;
+				}
+				
+				
 				while(isRunning) {
 					for(int i = 0; i< upm.getUpdates().getSize(); i++) {
 						if(!isRunning) 
