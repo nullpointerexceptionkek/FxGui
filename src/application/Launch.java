@@ -3,6 +3,7 @@ package application;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.net.ServerSocket;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -44,6 +45,17 @@ public class Launch extends Application {
 	}
 	
 	public static void main(String[] args) {
+		//check if already running
+		ServerSocket ss;
+		 ss = null;
+
+		    try {
+		        ss = new ServerSocket(1044);
+		    } catch (IOException e) {
+		        System.err.println("Application already running!");
+		        System.exit(-1);
+		    }
+		
 		launch(args);
 	}
 	
