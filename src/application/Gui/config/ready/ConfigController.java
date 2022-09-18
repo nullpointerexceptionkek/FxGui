@@ -113,7 +113,7 @@ public class ConfigController implements Initializable{
 	
 	public void addnewitem() {
 		currentCount++;
-		Script.addUpdates(new Updates(50, String.valueOf(currentCount), "Playing ", "Bad Apple"));
+		Script.addUpdates(new Updates(Script.getTotalupdates().get((currentCount< 2 )? 0 : currentCount-2).getWait(), String.valueOf(currentCount), "First line " + currentCount, "Second line" + currentCount));
 		displayUpdates.getItems().clear();		
 		displayUpdates.getItems().addAll(Script.getTotalupdates());	
 	}
@@ -136,32 +136,31 @@ public class ConfigController implements Initializable{
 		});
 		appID.setText(DiscordRP.apikey);
 		
-		//set the timestamp mode
-		switch(Script.getTimestampmode()) {
-			case "Default":
-				applaunch.setSelected(true);
-				break;
-			
-			case "None":
-				none.setSelected(true);
-				break;
-				
-			case "Local time":
-				local.setSelected(true);
-				break;
-			
-			case "Custom":
-				custom.setSelected(true);
-				break;
-			default:
-				applaunch.setSelected(true);
-				Script.setTimestampmode("Default");
-		
-		}
-		
 		
 		
 		try {
+			//set the timestamp mode
+			switch(Script.getTimestampmode()) {
+				case "Default":
+					applaunch.setSelected(true);
+					break;
+				
+				case "None":
+					none.setSelected(true);
+					break;
+					
+				case "Local time":
+					local.setSelected(true);
+					break;
+				
+				case "Custom":
+					custom.setSelected(true);
+					break;
+				default:
+					applaunch.setSelected(true);
+					Script.setTimestampmode("Default");
+			
+			}
 			displayUpdates.getItems().addAll(Script.getTotalupdates());	
 		}catch(Exception e) {
 			e.printStackTrace();

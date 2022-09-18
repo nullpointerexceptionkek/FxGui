@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Script {
 	private static ArrayList<Updates> totalupdates;
 	
-	private static String timestampmode;
+	private static String timestampmode = "Default";
 	
 	public Script() {
 		totalupdates = new ArrayList<Updates>();
