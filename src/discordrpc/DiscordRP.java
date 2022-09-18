@@ -16,6 +16,8 @@ public class DiscordRP {
 	
 	private boolean useStartTimeStamp = true;
 	
+	public static String discordName;
+	
 	public static String apikey;
 	
 	
@@ -56,6 +58,7 @@ public class DiscordRP {
 			
 			@Override
 			public void apply(DiscordUser user) {
+				discordName = user.username + "#" + user.discriminator;
 				System.out.println("Welcome " + user.username + "#" + user.discriminator + ".");
 			}
 		}).build();

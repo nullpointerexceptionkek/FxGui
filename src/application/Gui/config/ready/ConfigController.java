@@ -89,7 +89,7 @@ public class ConfigController implements Initializable{
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/LoadingScreen/LoadingScreen.fxml"));
 		Parent root = loader.load();
 		LoadingController lc = loader.getController();
-		lc.toNewScene(100,"callback");
+		lc.toNewScene(1000,"callback");
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		Scene scene = callbackButton.getScene();
 		
