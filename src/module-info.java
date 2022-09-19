@@ -5,6 +5,7 @@ module FxGui {
 	requires discord.rpc;
 	requires com.google.gson;
 	requires javafx.base;
+	requires java.desktop;
 	
 	opens application to javafx.graphics, javafx.fxml;
 	opens application.Gui.callbackscreen to javafx.graphics, javafx.fxml;

@@ -6,6 +6,9 @@ import java.io.StringWriter;
 import java.net.ServerSocket;
 import java.util.Arrays;
 
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -31,15 +34,13 @@ public class Launch extends Application {
 			e.printStackTrace(pw);
 			String sStackTrace = sw.toString(); // stack trace as a string
 			System.out.println(sStackTrace);
-			try {
-				Parent exc = FXMLLoader.load(getClass().getResource("/application/Gui/errorScreen/AppErrorScreen.fxml"));
-				Scene sceneexc = new Scene(exc);
-				primaryStage.setScene(sceneexc);
-				primaryStage.show();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-				System.exit(1);
-			}
+		    String message = "\"Custom Discord RP\"\n"
+		            + "it looks like we cannot connect to javaFX\n"
+		            + "Please check if javaFX is installed";
+		        JOptionPane.showMessageDialog(new JFrame(), message, "Error",
+		            JOptionPane.ERROR_MESSAGE);
+		    System.exit(1);
+		       
 		}
 		
 		
@@ -57,7 +58,12 @@ public class Launch extends Application {
 		        launch(args);
 		    } catch (IOException e) {
 		        System.err.println("Application already running!");
-		        System.exit(-1);
+			    String message = "\"Custom Discord RP\"\n"
+			            + "It looks like you are trying to create\n"
+			            + "mutiple instance of the program";
+			        JOptionPane.showMessageDialog(new JFrame(), message, "Application Running",
+			            JOptionPane.ERROR_MESSAGE);
+			    System.exit(1);
 		    }
 		
 	}
