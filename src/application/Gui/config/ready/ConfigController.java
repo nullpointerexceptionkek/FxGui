@@ -2,6 +2,7 @@ package application.Gui.config.ready;
 
 
 
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -28,8 +29,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MultipleSelectionModel;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
@@ -128,6 +130,16 @@ public class ConfigController implements Initializable{
 	//it will also set the appid to only accept numbers and if loaded is not null, it will leave it empty
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		ContextMenu contextMenu = new ContextMenu();
+		contextMenu.getItems().addAll(
+				new MenuItem("Copy"),
+				new MenuItem("Paste"),
+				new MenuItem("Delete")
+				);
+        //TilePane tilePane = new TilePane(displayUpdates);
+        displayUpdates.setContextMenu(contextMenu);
+
+        
 		currentCount = Script.getTotalupdates().size();
 		appID.textProperty().addListener(new ChangeListener<String>() {
 		    @Override
