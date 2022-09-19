@@ -29,7 +29,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MultipleSelectionModel;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -131,6 +133,7 @@ public class ConfigController implements Initializable{
 		    @Override
 		    public void changed(ObservableValue<? extends String> observable, String oldValue, 
 		        String newValue) {
+		    	if(newValue == null) return;
 		        if (!newValue.matches("\\d*")) {
 		            appID.setText(newValue.replaceAll("[^\\d]", ""));
 		        }
@@ -168,6 +171,8 @@ public class ConfigController implements Initializable{
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		
+		displayUpdates.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
 		//check if the list is double clicked
 		displayUpdates.setOnMouseClicked(new EventHandler<MouseEvent>() {

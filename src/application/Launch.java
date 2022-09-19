@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.ServerSocket;
+import java.util.Arrays;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +46,8 @@ public class Launch extends Application {
 	}
 	
 	public static void main(String[] args) {
+		
+		System.out.println(Arrays.toString(args));
 		//check if already running
 		ServerSocket ss;
 		 ss = null;

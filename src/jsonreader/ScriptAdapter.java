@@ -1,7 +1,6 @@
 package jsonreader;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
