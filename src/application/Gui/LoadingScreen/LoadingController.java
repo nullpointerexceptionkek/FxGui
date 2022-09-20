@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.LaunchManager;
+import discordrpc.DiscordRP;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -21,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import net.arikia.dev.drpc.DiscordRPC;
 
 public class LoadingController implements Initializable{
 
@@ -47,7 +49,25 @@ public class LoadingController implements Initializable{
 		@Override
 		public void run() {
 			try {
-				Thread.sleep(sleep != null? sleep: 1000);
+				switch(file) {
+				case "callback":
+					long time = System.currentTimeMillis();
+					while(DiscordRP.discordName == null) {
+						DiscordRPC.discordRunCallbacks();
+						Thread.sleep(100);
+						if(time + 50000 < System.currentTimeMillis()) {
+							file = "errorNoSDK";
+							System.err.println("fail to connect sdk");
+							break;
+						}
+					}
+					break;
+				case "readyconfig":
+					Thread.sleep(500);
+					break;
+				default:
+					Thread.sleep(sleep != null? sleep: 1000);
+				}
 				Platform.runLater(new Runnable() {
 					
 					@Override
@@ -69,6 +89,7 @@ public class LoadingController implements Initializable{
 									stackpane.getChildren().remove(anchorroot);
 								});
 								timeline.play();
+								LaunchManager.startUpdate();
 								break;
 							case "readyconfig":
 								Parent root1 = FXMLLoader.load(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
@@ -86,6 +107,21 @@ public class LoadingController implements Initializable{
 								});
 								timeline1.play();
 								break;
+							default:
+								Parent root2 = FXMLLoader.load(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
+								Scene scene2 = anchorroot.getScene();
+								
+								root2.translateYProperty().set(scene2.getHeight());
+								stackpane.getChildren().add(root2);
+								
+								Timeline timeline2 = new Timeline();
+								KeyValue keyValue2 = new KeyValue(root2.translateYProperty(), 0,Interpolator.EASE_OUT);
+								KeyFrame keyFrame2 = new KeyFrame(Duration.seconds(1), keyValue2);
+								timeline2.getKeyFrames().add(keyFrame2);
+								timeline2.setOnFinished(event1 -> {
+									stackpane.getChildren().remove(anchorroot);
+								});
+								timeline2.play();
 								
 							}
 						}catch(Exception e) {
@@ -108,7 +144,10 @@ public class LoadingController implements Initializable{
 		
 	}
 	
-	
+	public void toNewScene(String file)  {
+		this.file = file;
+		
+	}
 	
 	
 }

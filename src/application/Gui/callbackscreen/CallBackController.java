@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import application.LaunchManager;
 import application.Gui.LoadingScreen.LoadingController;
+import discordrpc.DiscordRP;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -27,6 +28,9 @@ import javafx.util.Duration;
 public class CallBackController implements Initializable{
 	@FXML
 	Label Playing;
+	
+	@FXML
+	Label Welcome;
 	
 	@FXML
 	private StackPane stackPane;
@@ -98,6 +102,7 @@ public class CallBackController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		switchtoconfig.setDisable(false);
+		Welcome.setText("Welcome " + DiscordRP.discordName + "!!!");
 	}
 	
 }

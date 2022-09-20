@@ -52,8 +52,7 @@ public class DiscordRP {
 			break;
 		}
 		
-		
-		
+
 		DiscordEventHandlers handlers = new DiscordEventHandlers.Builder().setReadyEventHandler(new ReadyCallback() {
 			
 			@Override
@@ -62,10 +61,7 @@ public class DiscordRP {
 				System.out.println("Welcome " + user.username + "#" + user.discriminator + ".");
 			}
 		}).build();
-		
-		
 		DiscordRPC.discordInitialize(apikey, handlers, true);
-		
 	}
 	
 	

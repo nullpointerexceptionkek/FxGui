@@ -25,6 +25,10 @@ public class LaunchManager {
 	public static void initCallBack() {
 		discordRP.LaunchReadyCallBack();
 		isRunning = true;
+		
+	}
+	
+	public static void startUpdate() {
 		new Thread("RunLoop") {
 			@Override
 			public void run() {
@@ -46,7 +50,6 @@ public class LaunchManager {
 				}
 			}
 		}.start();
-		
 	}
 	
 	public static void closeCallBack() {
