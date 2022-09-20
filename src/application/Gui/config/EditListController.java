@@ -56,49 +56,17 @@ public class EditListController extends ConfigController implements Initializabl
 	
 	public void cancelSaves(ActionEvent event) throws IOException {
 		stage = (Stage) scenePane.getScene().getWindow();
-		stage.close();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
-		Parent root = loader.load();
-		ConfigController cc = loader.getController();
-		//cc.setDisable(false);
-		stage = new Stage();
-		stage.setResizable(false);
-		stage.setTitle("Custom Discord RP" );
-		stage.setScene(new Scene(root));
-		stage.show(); 
-		numberInList = -1;
+		gobacktoConfig();
 	}
 	
 	public void saveChanges(ActionEvent event) throws IOException {
 		Script.setUpdates(new Updates(Long.parseLong(Wait.getText()),image.getText(),firstline.getText(),secondline.getText()), numberInList);
-		stage = (Stage) scenePane.getScene().getWindow();
-		stage.close();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
-		Parent root = loader.load();
-		ConfigController cc = loader.getController();
-		//cc.setDisable(false);
-		stage = new Stage();
-		stage.setResizable(false);
-		stage.setTitle("Custom Discord RP" );
-		stage.setScene(new Scene(root));
-		stage.show(); 
-		numberInList = -1;
+		gobacktoConfig();
 	}
 	
 	public void deleteThisItem(ActionEvent event) throws IOException {
 		Script.getTotalupdates().remove(numberInList);
-		stage = (Stage) scenePane.getScene().getWindow();
-		stage.close();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
-		Parent root = loader.load();
-		ConfigController cc = loader.getController();
-		//cc.setDisable(false);
-		stage = new Stage();
-		stage.setResizable(false);
-		stage.setTitle("Custom Discord RP" );
-		stage.setScene(new Scene(root));
-		stage.show(); 
-		numberInList = -1;
+		gobacktoConfig();
 	}
 	
 	@Override
@@ -125,6 +93,23 @@ public class EditListController extends ConfigController implements Initializabl
 		secondline.setText(Script.getTotalupdates().get(numberInList).getSl());
 		warning.setVisible(Script.getTotalupdates().get(numberInList).getWait() <= 16000);
 			
+	}
+	
+	private void gobacktoConfig() throws IOException {
+		stage = (Stage) scenePane.getScene().getWindow();
+		double x = stage.getX();
+		double y = stage.getY();
+		stage.close();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
+		Parent root = loader.load();
+		ConfigController cc = loader.getController();
+		stage = new Stage();
+		stage.setResizable(false);
+		stage.setX(x);stage.setY(y);
+		stage.setTitle("Custom Discord RP" );
+		stage.setScene(new Scene(root));
+		stage.show();
+		numberInList = -1;
 	}
 
 

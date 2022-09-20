@@ -193,7 +193,7 @@ public class ConfigController implements Initializable{
 				if(event.getButton().equals(MouseButton.PRIMARY)){
                     if(event.getClickCount() == 2){
                     	if(!((displayUpdates.getSelectionModel().getSelectedIndex()) == -1)) {
-                    		showListConfig(displayUpdates.getSelectionModel().getSelectedIndex());
+                    		showListConfig(displayUpdates.getSelectionModel().getSelectedIndex(),displayUpdates.getScene().getWindow().getX(),displayUpdates.getScene().getWindow().getY());
                     		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     		stage.close();
                     	}
@@ -205,7 +205,7 @@ public class ConfigController implements Initializable{
         });
 	}
 	//this will open up a new window and edit the arraylist
-	private void showListConfig(int numberInList) {
+	private void showListConfig(int numberInList, double x, double y) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/EditListScript.fxml"));
 			Parent root = loader.load();
@@ -215,6 +215,7 @@ public class ConfigController implements Initializable{
 	        Stage stage = new Stage();
 	        stage.setTitle("Config Editor");
 	        stage.setScene(new Scene(root));
+	        stage.setX(x);stage.setY(y);
 	        stage.setResizable(false);
 	        stage.show();
 	    } catch (IOException e) {
