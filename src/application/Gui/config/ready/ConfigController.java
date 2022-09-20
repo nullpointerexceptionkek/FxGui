@@ -212,10 +212,10 @@ public class ConfigController implements Initializable{
 			EditListController ec = loader.getController();
 			//loader.setController(ec);
 			ec.setnumberInList(numberInList);
-	        Scene scene = new Scene(root);
 	        Stage stage = new Stage();
 	        stage.setTitle("Config Editor");
-	        stage.setScene(scene);
+	        stage.setScene(new Scene(root));
+	        stage.setResizable(false);
 	        stage.show();
 	    } catch (IOException e) {
 	    	e.printStackTrace();

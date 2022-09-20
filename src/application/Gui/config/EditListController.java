@@ -62,6 +62,7 @@ public class EditListController extends ConfigController implements Initializabl
 		ConfigController cc = loader.getController();
 		//cc.setDisable(false);
 		stage = new Stage();
+		stage.setResizable(false);
 		stage.setTitle("Custom Discord RP" );
 		stage.setScene(new Scene(root));
 		stage.show(); 
@@ -77,6 +78,7 @@ public class EditListController extends ConfigController implements Initializabl
 		ConfigController cc = loader.getController();
 		//cc.setDisable(false);
 		stage = new Stage();
+		stage.setResizable(false);
 		stage.setTitle("Custom Discord RP" );
 		stage.setScene(new Scene(root));
 		stage.show(); 
@@ -92,6 +94,7 @@ public class EditListController extends ConfigController implements Initializabl
 		ConfigController cc = loader.getController();
 		//cc.setDisable(false);
 		stage = new Stage();
+		stage.setResizable(false);
 		stage.setTitle("Custom Discord RP" );
 		stage.setScene(new Scene(root));
 		stage.show(); 
