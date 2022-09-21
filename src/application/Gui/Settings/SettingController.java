@@ -12,12 +12,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 public class SettingController implements Initializable{
@@ -35,25 +35,29 @@ public class SettingController implements Initializable{
 	private StackPane stackpane;
 	
 	public void switchBack(ActionEvent event) throws IOException {
-		Parent root2 = FXMLLoader.load(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
-		Scene scene2 = anchorroot.getScene();
-		
-		root2.translateXProperty().set(scene2.getWidth());
-		stackpane.getChildren().add(root2);
-		
-		Timeline timeline2 = new Timeline();
-		KeyValue keyValue2 = new KeyValue(root2.translateXProperty(), 0,Interpolator.EASE_OUT);
-		KeyFrame keyFrame2 = new KeyFrame(Duration.seconds(0.3), keyValue2);
-		timeline2.getKeyFrames().add(keyFrame2);
-		timeline2.setOnFinished(event1 -> {
-			stackpane.getChildren().remove(anchorroot);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
+		Pane pane = loader.load();
+		anchorroot.getScene().setRoot(pane);
+		Circle circle = new Circle(50);
+		pane.setShape(circle);
+		circle.radiusProperty().addListener((observable, oldvalue, newvalue) -> {
+			double size = newvalue.doubleValue()*2;
+			pane.setMinSize(size, size);
+			pane.setPrefSize(size, size);
+			pane.setMaxSize(size, size);
 		});
-		timeline2.play();
+		
+		Timeline timeline = new Timeline();
+		KeyValue keyValue = new KeyValue(circle.radiusProperty(), 200, Interpolator.EASE_IN);
+		KeyFrame keyFrame = new KeyFrame(Duration.seconds(5), keyValue);
+		timeline.getKeyFrames().add(keyFrame);
+		timeline.play();
+		
 	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
+		theme.getItems().addAll("Dark", "Light");
 		
 	}
 	
