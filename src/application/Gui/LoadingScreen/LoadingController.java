@@ -55,7 +55,7 @@ public class LoadingController implements Initializable{
 					while(DiscordRP.discordName == null) {
 						DiscordRPC.discordRunCallbacks();
 						Thread.sleep(100);
-						if(time + 50000 < System.currentTimeMillis()) {
+						if(time + 15000 < System.currentTimeMillis()) {
 							file = "errorNoSDK";
 							System.err.println("fail to connect sdk");
 							break;
