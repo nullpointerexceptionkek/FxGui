@@ -126,10 +126,10 @@ public class ConfigController implements Initializable{
 		Parent root = loader.load();
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
 		Scene scene = settingButton.getScene();
-		root.translateYProperty().set(scene.getHeight());
+		root.translateXProperty().set(0);
 		stackPane.getChildren().add(root);
 		Timeline timeline = new Timeline();
-		KeyValue keyValue = new KeyValue(root.translateYProperty(), 0,Interpolator.EASE_IN);
+		KeyValue keyValue = new KeyValue(root.translateXProperty(), scene.getWidth(),Interpolator.EASE_OUT);
 		KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), keyValue);
 		timeline.getKeyFrames().add(keyFrame);
 		timeline.setOnFinished(event1 -> {
