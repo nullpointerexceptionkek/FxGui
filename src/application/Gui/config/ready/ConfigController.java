@@ -2,7 +2,6 @@ package application.Gui.config.ready;
 
 
 
-import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,12 +28,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -46,11 +47,15 @@ public class ConfigController implements Initializable{
 	
 	@FXML
 	private TextField appID;
+	
 	@FXML
 	protected ListView<Updates> displayUpdates;
 	
 	@FXML
 	private Button callbackButton;
+	
+	@FXML
+	private Button settingButton;
 	
 	@FXML
 	private RadioButton applaunch, none, local, custom;
@@ -116,6 +121,23 @@ public class ConfigController implements Initializable{
 
 	}
 	
+	public void switchToSetting(ActionEvent event) throws IOException, InterruptedException {
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/Settings/Settings.fxml"));
+		Parent root = loader.load();
+		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		Scene scene = settingButton.getScene();
+		root.translateYProperty().set(scene.getHeight());
+		stackPane.getChildren().add(root);
+		Timeline timeline = new Timeline();
+		KeyValue keyValue = new KeyValue(root.translateYProperty(), 0,Interpolator.EASE_IN);
+		KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), keyValue);
+		timeline.getKeyFrames().add(keyFrame);
+		timeline.setOnFinished(event1 -> {
+			stackPane.getChildren().remove(Anchorroot);
+		});
+		timeline.play();
+	}
+	
 	public void addnewitem() {
 		currentCount++;
 		if(Script.getTotalupdates().size()>0)
@@ -130,6 +152,11 @@ public class ConfigController implements Initializable{
 	//it will also set the appid to only accept numbers and if loaded is not null, it will leave it empty
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		ImageView imageView = new ImageView(getClass().getResource("/application/Gui/config/ready/settingsImage.png").toExternalForm());
+		imageView.setFitHeight(25);
+		imageView.setPreserveRatio(true);
+		settingButton.setGraphic(imageView);
+		settingButton.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
 		ContextMenu contextMenu = new ContextMenu();
 		contextMenu.getItems().addAll(
 				new MenuItem("Copy"),

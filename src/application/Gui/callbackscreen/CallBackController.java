@@ -47,38 +47,6 @@ public class CallBackController implements Initializable{
 	public void switchToConfig(ActionEvent event) throws IOException, InterruptedException {
 		switchtoconfig.setDisable(true);
 		LaunchManager.closeCallBack();
-		/*
-		FadeTransition fadeTransition = new FadeTransition();
-		fadeTransition.setDuration(Duration.millis(1000));
-		fadeTransition.setNode(stackPane);
-		fadeTransition.setFromValue(1);
-		fadeTransition.setToValue(0);
-		fadeTransition.setOnFinished(new EventHandler<ActionEvent>() {
-			
-			@Override
-			public void handle(ActionEvent arg0) {
-				try {
-					FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/LoadingScreen/LoadingScreen.fxml"));
-					Parent root;
-					root = loader.load();
-					Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-					Scene scene = new Scene(root);
-					stage.setScene(scene);
-					stage.show();
-					LoadingController lc = loader.getController();
-					lc.toNewScene(0,"readyconfig");
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				
-			}
-		});
-		fadeTransition.play();
-		*/
-
-		
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/LoadingScreen/LoadingScreen.fxml"));
 		Parent root = loader.load();
 		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();

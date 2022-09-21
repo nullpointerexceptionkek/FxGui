@@ -32,6 +32,7 @@
             <RadioButton fx:id="custom" layoutX="180.0" layoutY="371.0" mnemonicParsing="false" onAction="#getTimeStampMode" prefHeight="17.0" prefWidth="82.0" text="Custom" textFill="WHITE" toggleGroup="$timestampmode" />
             <RadioButton fx:id="local" layoutX="75.0" layoutY="371.0" mnemonicParsing="false" onAction="#getTimeStampMode" prefHeight="17.0" prefWidth="82.0" text="Local time" textFill="WHITE" toggleGroup="$timestampmode" />
             <RadioButton fx:id="none" layoutX="180.0" layoutY="346.0" mnemonicParsing="false" onAction="#getTimeStampMode" prefHeight="17.0" prefWidth="99.0" text="None" textFill="WHITE" toggleGroup="$timestampmode" />
+            <Button fx:id="settingButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#switchToSetting" prefHeight="25.0" prefWidth="27.0" text="S" />
          </children>
       </AnchorPane>
    </children>
