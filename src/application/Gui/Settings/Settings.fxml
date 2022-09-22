@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="stackpane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Gui.Settings.SettingController">
+<StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Gui.Settings.SettingController">
    <children>
-      <AnchorPane fx:id="anchorroot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="334.0" style="-fx-background-color: #2c2f33;">
+      <AnchorPane fx:id="anchorRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="334.0" style="-fx-background-color: #2c2f33;">
          <children>
             <Label alignment="CENTER" layoutX="50.0" layoutY="14.0" prefHeight="32.0" prefWidth="234.0" text="Settings" textFill="WHITE">
                <font>

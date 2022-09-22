@@ -86,8 +86,7 @@ public class DiscordRP {
 			else {
 				presence.setEndTimestamp(created);
 			}
-		}
-			
+		}	
 		//presence.setSmallImage("large", "");
 		//presence.setParty("party", 2, 3);
 		DiscordRPC.discordUpdatePresence(presence.build());

@@ -61,7 +61,7 @@ public class ConfigController implements Initializable{
 	private RadioButton applaunch, none, local, custom;
 	
 	@FXML
-	private AnchorPane Anchorroot;
+	private AnchorPane anchorRoot;
 	
 	@FXML
 	private StackPane stackPane;
@@ -112,7 +112,7 @@ public class ConfigController implements Initializable{
 		KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), keyValue);
 		timeline.getKeyFrames().add(keyFrame);
 		timeline.setOnFinished(event1 -> {
-			stackPane.getChildren().remove(Anchorroot);
+			stackPane.getChildren().remove(anchorRoot);
 		});
 		timeline.play();
 		
@@ -122,20 +122,21 @@ public class ConfigController implements Initializable{
 	}
 	
 	public void switchToSetting(ActionEvent event) throws IOException, InterruptedException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/Settings/Settings.fxml"));
-		Parent root = loader.load();
-		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-		Scene scene = settingButton.getScene();
-		root.translateXProperty().set(scene.getWidth());
+		Parent root = FXMLLoader.load(getClass().getResource("/application/Gui/Settings/Settings.fxml"));
+		Scene scene = anchorRoot.getScene();
+		
+		root.translateYProperty().set(scene.getHeight());
 		stackPane.getChildren().add(root);
+		
 		Timeline timeline = new Timeline();
-		KeyValue keyValue = new KeyValue(root.translateXProperty(), 0,Interpolator.EASE_OUT);
-		KeyFrame keyFrame = new KeyFrame(Duration.seconds(0.3), keyValue);
+		KeyValue keyValue = new KeyValue(root.translateYProperty(), 0,Interpolator.EASE_OUT);
+		KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), keyValue);
 		timeline.getKeyFrames().add(keyFrame);
 		timeline.setOnFinished(event1 -> {
-			stackPane.getChildren().remove(Anchorroot);
+			stackPane.getChildren().remove(anchorRoot);
 		});
 		timeline.play();
+		
 	}
 	
 	public void addnewitem() {
