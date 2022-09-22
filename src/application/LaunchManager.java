@@ -14,6 +14,8 @@ public class LaunchManager {
 	
 	private static UpdateManager upm;
 	
+	private static Thread runloop;
+	
 	public static void init() {
 		FileManager.init();
 		discordRP.init();
@@ -29,30 +31,35 @@ public class LaunchManager {
 	}
 	
 	public static void startUpdate() {
-		new Thread("RunLoop") {
-			@Override
-			public void run() {
-				if(upm.getUpdates().getSize()==1) {
-					excuteUpdate(upm.getUpdates().getUpdates(0));
-					DiscordRPC.discordRunCallbacks();
-					return;
-				}
-				
-				
-				while(isRunning) {
-					for(int i = 0; i< upm.getUpdates().getSize(); i++) {
-						if(!isRunning) 
-							return;
-						excuteUpdate(upm.getUpdates().getUpdates(i));
+		if(runloop == null) {
+			runloop = new Thread("RunLoop") {
+				@Override
+				public void run() {
+					if(upm.getUpdates().getSize()==1) {
+						excuteUpdate(upm.getUpdates().getUpdates(0));
 						DiscordRPC.discordRunCallbacks();
+						return;
 					}
 					
+					
+					while(isRunning) {
+						for(int i = 0; i< upm.getUpdates().getSize(); i++) {
+							if(!isRunning) 
+								return;
+							excuteUpdate(upm.getUpdates().getUpdates(i));
+							DiscordRPC.discordRunCallbacks();
+						}
+						
+					}
 				}
-			}
-		}.start();
+			};
+			runloop.start();
+			return;
+		}
 	}
 	
 	public static void closeCallBack() {
+		System.out.println();
 		discordRP.shutdown();
 		isRunning = false;
 	}

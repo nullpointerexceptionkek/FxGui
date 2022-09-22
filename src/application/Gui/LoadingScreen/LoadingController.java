@@ -63,7 +63,7 @@ public class LoadingController implements Initializable{
 					}
 					break;
 				case "readyconfig":
-					Thread.sleep(7000);
+					Thread.sleep(100);
 					break;
 				default:
 					Thread.sleep(sleep != null? sleep: 1000);
