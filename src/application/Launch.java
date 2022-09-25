@@ -25,7 +25,7 @@ public class Launch extends Application {
 			LaunchManager.init();
 			Parent root = FXMLLoader.load(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
 			Scene scene = new Scene(root);
-			//scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource("/application/Gui/config/ready/ConfigScreen.css").toExternalForm());
 			primaryStage.setTitle("Custom Discord RPC");
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
