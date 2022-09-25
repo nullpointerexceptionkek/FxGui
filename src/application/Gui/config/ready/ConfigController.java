@@ -128,7 +128,6 @@ public class ConfigController implements Initializable{
 	public void switchToSetting(ActionEvent event) throws IOException, InterruptedException {
 		Parent root = FXMLLoader.load(getClass().getResource("/application/Gui/Settings/Settings.fxml"));
 		Scene scene = anchorRoot.getScene();
-		
 		root.translateYProperty().set(scene.getHeight());
 		stackPane.getChildren().add(root);
 		
@@ -241,6 +240,7 @@ public class ConfigController implements Initializable{
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/EditListScript.fxml"));
 			Parent root = loader.load();
+			root.getStylesheets().add(getClass().getResource("/application/Gui/Application.css").toExternalForm());
 			EditListController ec = loader.getController();
 			//loader.setController(ec);
 			ec.setnumberInList(numberInList);

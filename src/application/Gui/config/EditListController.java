@@ -102,6 +102,7 @@ public class EditListController extends ConfigController implements Initializabl
 		stage.close();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
 		Parent root = loader.load();
+		root.getStylesheets().add(getClass().getResource("/application/Gui/Application.css").toExternalForm());
 		ConfigController cc = loader.getController();
 		stage = new Stage();
 		stage.setResizable(false);

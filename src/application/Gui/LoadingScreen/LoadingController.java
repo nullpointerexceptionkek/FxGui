@@ -45,6 +45,9 @@ public class LoadingController implements Initializable{
 		
 		@Override
 		public void run() {
+			if(file == null) {
+				file = "null";
+			}
 			try {
 				switch(file) {
 				case "callback":
