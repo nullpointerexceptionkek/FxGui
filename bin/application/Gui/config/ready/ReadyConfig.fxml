@@ -12,7 +12,7 @@
 
 <StackPane fx:id="stackPane" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Gui.config.ready.ConfigController">
    <children>
-      <AnchorPane fx:id="anchorRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="334.0" style="-fx-background-color: #2C2F33;">
+      <AnchorPane fx:id="anchorRoot" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="334.0">
          <children>
             <Label fx:id="titleLabel" alignment="CENTER" layoutX="50.0" layoutY="14.0" prefHeight="32.0" prefWidth="234.0" text="Custom Discord RP" textFill="WHITE">
                <font>
