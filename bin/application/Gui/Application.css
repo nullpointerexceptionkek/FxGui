@@ -51,6 +51,11 @@
     -fx-text-fill: #ffffff;
 }
 
+.choice-box{
+	-fx-background-color: #40444b;
+	-fx-background-fills: #ffffff;
+}
+
 #titleLabel{
 	-fx-font-size:20;
 }

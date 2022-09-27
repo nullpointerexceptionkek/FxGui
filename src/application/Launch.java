@@ -10,13 +10,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import discordrpc.settings.Settings;
-import discordrpc.settings.Theme;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 
 public class Launch extends Application {

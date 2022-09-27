@@ -4,24 +4,22 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Gui.config.ready.ConfigController;
 import discordrpc.settings.SettingManager;
 import discordrpc.settings.Settings;
 import discordrpc.settings.Theme;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import javafx.util.Duration;
+import javafx.stage.Stage;
 
 public class SettingController implements Initializable{
 
@@ -38,20 +36,19 @@ public class SettingController implements Initializable{
 	private StackPane stackPane;
 	
 	public void switchBack(ActionEvent event) throws IOException {
-		Parent root = FXMLLoader.load(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
-		Scene scene = anchorRoot.getScene();
-		
-		root.translateYProperty().set(scene.getHeight());
-		stackPane.getChildren().add(root);
-		
-		Timeline timeline = new Timeline();
-		KeyValue keyValue = new KeyValue(root.translateYProperty(), 0,Interpolator.EASE_OUT);
-		KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), keyValue);
-		timeline.getKeyFrames().add(keyFrame);
-		timeline.setOnFinished(event1 -> {
-			stackPane.getChildren().remove(anchorRoot);
-		});
-		timeline.play();
+		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		stage.close();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
+		Parent root = loader.load();
+		root.getStylesheets().add(getClass().getResource(Settings.getTheme().Themepass()).toExternalForm());
+		ConfigController ec = loader.getController();
+		//loader.setController(ec);
+        stage = new Stage();
+        stage.setTitle("Custom Discord RP");
+        stage.setScene(new Scene(root));
+        stage.setX(goBack.getScene().getWindow().getX());stage.setY(goBack.getScene().getWindow().getY());
+        stage.setResizable(false);
+        stage.show();
 		
 	}
 

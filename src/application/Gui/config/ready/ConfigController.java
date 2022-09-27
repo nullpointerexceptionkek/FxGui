@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 
 import application.LaunchManager;
 import application.Gui.LoadingScreen.LoadingController;
+import application.Gui.Settings.SettingController;
 import application.Gui.config.EditListController;
 import discordrpc.DiscordRP;
 import discordrpc.Script;
@@ -129,19 +130,19 @@ public class ConfigController implements Initializable{
 	}
 	
 	public void switchToSetting(ActionEvent event) throws IOException, InterruptedException {
-		Parent root = FXMLLoader.load(getClass().getResource("/application/Gui/Settings/Settings.fxml"));
-		Scene scene = anchorRoot.getScene();
-		root.translateYProperty().set(scene.getHeight());
-		stackPane.getChildren().add(root);
-		
-		Timeline timeline = new Timeline();
-		KeyValue keyValue = new KeyValue(root.translateYProperty(), 0,Interpolator.EASE_OUT);
-		KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), keyValue);
-		timeline.getKeyFrames().add(keyFrame);
-		timeline.setOnFinished(event1 -> {
-			stackPane.getChildren().remove(anchorRoot);
-		});
-		timeline.play();
+		Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+		stage.close();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/Settings/Settings.fxml"));
+		Parent root = loader.load();
+		root.getStylesheets().add(getClass().getResource(Settings.getTheme().Themepass()).toExternalForm());
+		SettingController ec = loader.getController();
+		//loader.setController(ec);
+        stage = new Stage();
+        stage.setTitle("Settings");
+        stage.setScene(new Scene(root));
+        stage.setX(displayUpdates.getScene().getWindow().getX());stage.setY(displayUpdates.getScene().getWindow().getY());
+        stage.setResizable(false);
+        stage.show();
 		
 	}
 	
