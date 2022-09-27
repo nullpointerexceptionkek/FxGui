@@ -25,8 +25,6 @@ import javafx.stage.Stage;
 
 public class EditListController extends ConfigController implements Initializable{
 	
-	@FXML
-	private TextArea warning;
 	
 	@FXML
 	private TextField image;
@@ -80,10 +78,8 @@ public class EditListController extends ConfigController implements Initializabl
 		        if (!newValue.matches("\\d*")) {
 		            Wait.setText(newValue.replaceAll("[^\\d]", ""));
 		        }
-		        if(!Wait.getText().isEmpty())
-		        	warning.setVisible(Long.valueOf(Wait.getText()) <= 16000);
-		    }
 		    
+		    }
 		});
 	}
 	
@@ -93,7 +89,6 @@ public class EditListController extends ConfigController implements Initializabl
 		image.setText(Script.getTotalupdates().get(numberInList).getImage());
 		firstline.setText(Script.getTotalupdates().get(numberInList).getFl());
 		secondline.setText(Script.getTotalupdates().get(numberInList).getSl());
-		warning.setVisible(Script.getTotalupdates().get(numberInList).getWait() <= 16000);
 			
 	}
 	

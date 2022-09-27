@@ -56,6 +56,12 @@
 	-fx-background-fills: #ffffff;
 }
 
+.context-menu{
+	-fx-background-color: #18191c;
+	-fx-text-fill: #a3a4a8;
+	
+}
+
 #titleLabel{
 	-fx-font-size:20;
 }
