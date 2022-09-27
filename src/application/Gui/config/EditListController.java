@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import application.Gui.config.ready.ConfigController;
 import discordrpc.Script;
 import discordrpc.Updates;
+import discordrpc.settings.Settings;
+import discordrpc.settings.Theme;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -102,7 +104,7 @@ public class EditListController extends ConfigController implements Initializabl
 		stage.close();
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
 		Parent root = loader.load();
-		root.getStylesheets().add(getClass().getResource("/application/Gui/Application.css").toExternalForm());
+		root.getStylesheets().add(getClass().getResource(Settings.getTheme().Themepass()).toExternalForm());
 		ConfigController cc = loader.getController();
 		stage = new Stage();
 		stage.setResizable(false);

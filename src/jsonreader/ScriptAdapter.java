@@ -33,7 +33,7 @@ public class ScriptAdapter extends TypeAdapter<Script>{
 			}
 			return tu;
 		} catch (Exception e) {
-			System.out.println("Invalid File");
+			System.err.println("Invalid File");
 			return null;
 		}
 			

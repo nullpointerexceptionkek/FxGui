@@ -1,9 +1,8 @@
 package discordrpc;
 
-import java.io.File;
 import java.util.Calendar;
 
-import jsonreader.FileManager;
+import discordrpc.settings.Settings;
 import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
@@ -17,8 +16,6 @@ public class DiscordRP {
 	private boolean useStartTimeStamp = true;
 	
 	public static String discordName;
-	
-	public static String apikey;
 	
 	
 	public void LaunchReadyCallBack(){
@@ -61,13 +58,10 @@ public class DiscordRP {
 				System.out.println("Welcome " + user.username + "#" + user.discriminator + ".");
 			}
 		}).build();
-		DiscordRPC.discordInitialize(apikey, handlers, true);
+		DiscordRPC.discordInitialize(Settings.getDiscordAPIKey(), handlers, true);
 	}
 	
 	
-	public void init() {
-		apikey = loadKeyFromJson();
-	}
 	
 	public void shutdown() {
 		DiscordRPC.discordShutdown();
@@ -93,19 +87,6 @@ public class DiscordRP {
 		
 	}
 	
-	public String loadKeyFromJson() {
-		String loaded = FileManager.readFromJson(new File(FileManager.getROOT_DIR(),"key.json"),String.class);
-		apikey = loaded;
-		System.out.println(loaded);
-		
-		
-		return loaded;
-		
-	}
-	
-	public static void saveKeyToFile() {
-		FileManager.writeJsonTofile(new File(FileManager.getROOT_DIR(), "key.json"), apikey);
-	}
 	
 	
 }

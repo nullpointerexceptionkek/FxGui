@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import discordrpc.settings.SettingManager;
+import discordrpc.settings.Settings;
+import discordrpc.settings.Theme;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -26,7 +29,7 @@ public class SettingController implements Initializable{
 	private Button goBack;
 	
 	@FXML
-	private ChoiceBox<String> theme;
+	private ChoiceBox<Theme> theme;
 	
 	@FXML
 	private AnchorPane anchorRoot;
@@ -54,7 +57,12 @@ public class SettingController implements Initializable{
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		theme.getItems().addAll("Dark", "Light");
+		theme.getItems().addAll(Theme.dark,Theme.light);
+		theme.setValue((Settings.getTheme()));
+		theme.setOnAction((event) -> {
+			Settings.setTheme(theme.getValue());
+		});
+		SettingManager.saveSettingToFile();
 		
 	}
 	

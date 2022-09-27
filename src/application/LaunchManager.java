@@ -3,6 +3,7 @@ package application;
 import discordrpc.DiscordRP;
 import discordrpc.UpdateManager;
 import discordrpc.Updates;
+import discordrpc.settings.SettingManager;
 import jsonreader.FileManager;
 import net.arikia.dev.drpc.DiscordRPC;
 
@@ -18,7 +19,7 @@ public class LaunchManager {
 	
 	public static void init() {
 		FileManager.init();
-		discordRP.init();
+		SettingManager.init();
 		upm = new UpdateManager();
 		
 		
@@ -90,7 +91,7 @@ public class LaunchManager {
 	}
 	
 	public static void onClose() {
-		DiscordRP.saveKeyToFile();
+		SettingManager.saveSettingToFile();
 		upm.saveScriptToFile();
 		discordRP.shutdown();
 		System.exit(0);

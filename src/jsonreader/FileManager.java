@@ -12,6 +12,7 @@ import com.google.gson.GsonBuilder;
 
 import discordrpc.Script;
 import discordrpc.Updates;
+import discordrpc.settings.Settings;
 
 public class FileManager {
 
@@ -25,6 +26,7 @@ public class FileManager {
 		GsonBuilder builder = new GsonBuilder();
 		builder.registerTypeAdapter(Updates.class, new UpdatesAdapter());
 		builder.registerTypeAdapter(Script.class, new ScriptAdapter());
+		builder.registerTypeAdapter(Settings.class, new SettingsAdapter());
 		gson = builder.create();
 	}
 	

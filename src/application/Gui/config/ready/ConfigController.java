@@ -13,6 +13,9 @@ import application.Gui.config.EditListController;
 import discordrpc.DiscordRP;
 import discordrpc.Script;
 import discordrpc.Updates;
+import discordrpc.settings.SettingManager;
+import discordrpc.settings.Settings;
+import discordrpc.settings.Theme;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -91,8 +94,8 @@ public class ConfigController implements Initializable{
 		//update DiscordRP app id and save it to the file
 		if(displayUpdates.getItems().size() < 1) return;
 		String DiscordAppID = appID.getText();
-		DiscordRP.apikey = DiscordAppID;
-		DiscordRP.saveKeyToFile();
+		Settings.setDiscordAPIKey(DiscordAppID);
+		SettingManager.saveSettingToFile();
 		
 		System.out.println(displayUpdates.getItems());
 		ArrayList<Updates> u = new ArrayList<>(displayUpdates.getItems());
@@ -183,7 +186,7 @@ public class ConfigController implements Initializable{
 		    }
 		    
 		});
-		appID.setText(DiscordRP.apikey);
+		appID.setText(Settings.getDiscordAPIKey());
 		
 		
 		
@@ -240,7 +243,7 @@ public class ConfigController implements Initializable{
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Gui/config/EditListScript.fxml"));
 			Parent root = loader.load();
-			root.getStylesheets().add(getClass().getResource("/application/Gui/Application.css").toExternalForm());
+			root.getStylesheets().add(getClass().getResource(Settings.getTheme().Themepass()).toExternalForm());
 			EditListController ec = loader.getController();
 			//loader.setController(ec);
 			ec.setnumberInList(numberInList);

@@ -9,6 +9,8 @@ import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+import discordrpc.settings.Settings;
+import discordrpc.settings.Theme;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -25,7 +27,7 @@ public class Launch extends Application {
 			LaunchManager.init();
 			Parent root = FXMLLoader.load(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
 			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("/application/Gui/ApplicationLight.css").toExternalForm());
+			scene.getStylesheets().add(getClass().getResource(Settings.getTheme().Themepass()).toExternalForm());
 			primaryStage.setTitle("Custom Discord RPC");
 			primaryStage.setScene(scene);
 			primaryStage.setResizable(false);
