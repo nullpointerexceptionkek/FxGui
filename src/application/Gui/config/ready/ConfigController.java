@@ -148,9 +148,16 @@ public class ConfigController implements Initializable{
 	
 	public void addnewitem() {
 		currentCount++;
+		System.out.println(currentCount);
 		if(Script.getTotalupdates().size()>0)
-			Script.addUpdates(new Updates((Script.getTotalupdates().get((currentCount< 2 )? 0 : currentCount-2).getWait()), String.valueOf(currentCount), "First line " + currentCount, "Second line " + currentCount));
-		else Script.addUpdates(new Updates(16000, String.valueOf(currentCount), "First line " + currentCount, "Second line " + currentCount));
+			Script.addUpdates(new Updates((Script.getTotalupdates().get(currentCount-2).getWait()), 
+					String.valueOf(currentCount),
+					Script.getTotalupdates().get(currentCount-2).getImagetext(),
+					Script.getTotalupdates().get(currentCount-2).getSmallimage()
+					,Script.getTotalupdates().get(currentCount-2).getSmalltext(), 
+					"First line " + currentCount, "Second line " + currentCount));
+		
+		else Script.addUpdates(new Updates(16000, String.valueOf(currentCount), "First line " + currentCount,"","","", "Second line " + currentCount));
 		displayUpdates.getItems().clear();		
 		displayUpdates.getItems().addAll(Script.getTotalupdates());	
 	}

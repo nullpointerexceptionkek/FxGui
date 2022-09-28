@@ -25,18 +25,27 @@ import javafx.stage.Stage;
 
 public class EditListController extends ConfigController implements Initializable{
 	
+	@FXML
+	private TextField Wait;
 	
 	@FXML
 	private TextField image;
+	
+	@FXML
+	private TextField imagetext;
+	
+	@FXML
+	private TextField smallimage;
+	
+	@FXML
+	private TextField smalltext;
+	
 	
 	@FXML
 	private TextField firstline;
 	
 	@FXML
 	private TextField secondline;
-	
-	@FXML
-	private TextField Wait;
 	
 	@FXML
 	private Button CancelButton;
@@ -60,7 +69,8 @@ public class EditListController extends ConfigController implements Initializabl
 	}
 	
 	public void saveChanges(ActionEvent event) throws IOException {
-		Script.setUpdates(new Updates(Long.parseLong(Wait.getText()),image.getText(),firstline.getText(),secondline.getText()), numberInList);
+		Script.setUpdates(new Updates(Long.parseLong(Wait.getText()),image.getText(),imagetext.getText(),smallimage.getText(),
+				smalltext.getText(),firstline.getText(),secondline.getText()), numberInList);
 		gobacktoConfig();
 	}
 	
@@ -87,6 +97,9 @@ public class EditListController extends ConfigController implements Initializabl
 		this.numberInList = numberInList;
 		Wait.setText(String.valueOf(Script.getTotalupdates().get(numberInList).getWait()));
 		image.setText(Script.getTotalupdates().get(numberInList).getImage());
+		imagetext.setText(Script.getTotalupdates().get(numberInList).getImagetext());
+		smallimage.setText(Script.getTotalupdates().get(numberInList).getSmallimage());
+		smalltext.setText(Script.getTotalupdates().get(numberInList).getSmalltext());
 		firstline.setText(Script.getTotalupdates().get(numberInList).getFl());
 		secondline.setText(Script.getTotalupdates().get(numberInList).getSl());
 			

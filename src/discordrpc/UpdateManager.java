@@ -23,7 +23,7 @@ public class UpdateManager{
 		if(loaded == null) {
 			loaded = Script.fromTotalUpdates();
 			this.updates = loaded;
-			Script.addUpdates(new Updates(16000,"1", "First line 1", "Second line 1"));
+			Script.addUpdates(new Updates(16000,"1","","","", "First line 1", "Second line 1"));
 			saveScriptToFile();	
 		}
 		

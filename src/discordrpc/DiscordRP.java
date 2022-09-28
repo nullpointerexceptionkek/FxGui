@@ -68,10 +68,12 @@ public class DiscordRP {
 	}
 	
 
-	public void update(String image, String firstLine, String secondLine) {
+	public void update(String image, String imagetext, String smallimage, String smalltext, String firstLine, String secondLine) {
 		DiscordRichPresence.Builder presence = new DiscordRichPresence.Builder(secondLine);
 		if(image != null)
-			presence.setBigImage(image, "");
+			presence.setBigImage(image, imagetext);
+		if(smallimage!=null)
+			presence.setSmallImage(smallimage, smalltext);
 		presence.setDetails(firstLine);
 		if(created != -1) {
 			if(useStartTimeStamp) {
@@ -81,7 +83,6 @@ public class DiscordRP {
 				presence.setEndTimestamp(created);
 			}
 		}	
-		//presence.setSmallImage("large", "");
 		//presence.setParty("party", 2, 3);
 		DiscordRPC.discordUpdatePresence(presence.build());
 		

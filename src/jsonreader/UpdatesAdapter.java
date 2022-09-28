@@ -23,10 +23,13 @@ public class UpdatesAdapter extends TypeAdapter<Updates>{
 		
 		long wait = Long.parseLong(parts[0]);
 		String image = parts[1];
-		String F1 = parts[2];
-	    String S1 = parts[3];
+		String imagetext = parts[2];
+	    String smallimage = parts[3];
+	    String smalltext = parts[4];
+	    String F1 = parts[5];
+	    String Sl = parts[6];
 	    
-		return new Updates(wait, image, F1, S1);
+		return new Updates(wait, image, imagetext,smallimage,smalltext,F1,Sl);
 		
 		
 	}
