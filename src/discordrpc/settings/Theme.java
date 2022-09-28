@@ -3,7 +3,8 @@ package discordrpc.settings;
 public enum Theme {
 
 	light("/application/Gui/ApplicationLight.css"),
-	dark("/application/Gui/Application.css");
+	dark("/application/Gui/Application.css"),
+	lightgreen("/application/Gui/ApplicationLightGreen.css");
 	
 	private final String themepass;
 

@@ -2,6 +2,7 @@ package application.Gui.Settings;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.EnumSet;
 import java.util.ResourceBundle;
 
 import application.Gui.config.ready.ConfigController;
@@ -53,8 +54,8 @@ public class SettingController implements Initializable{
 	}
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		theme.getItems().addAll(Theme.dark,Theme.light);
+	public void initialize(URL arg0, ResourceBundle arg1) {	
+		theme.getItems().addAll(EnumSet.allOf(Theme.class));
 		theme.setValue((Settings.getTheme()));
 		theme.setOnAction((event) -> {
 			Settings.setTheme(theme.getValue());
