@@ -75,6 +75,7 @@ public class DiscordRP {
 		if(smallimage!=null)
 			presence.setSmallImage(smallimage, smalltext);
 		presence.setDetails(firstLine);
+		//presence.setSecrets("hello","google");
 		if(created != -1) {
 			if(useStartTimeStamp) {
 				presence.setStartTimestamps(created);
