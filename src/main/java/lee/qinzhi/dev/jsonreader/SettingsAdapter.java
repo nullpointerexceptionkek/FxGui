@@ -1,4 +1,4 @@
-package lee.qinzhi.dev.jsonreader.jsonreader;
+package lee.qinzhi.dev.jsonreader;
 
 import java.io.IOException;
 
@@ -6,9 +6,9 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
+import lee.qinzhi.dev.discordrpc.settings.Settings;
+import lee.qinzhi.dev.discordrpc.settings.Theme;
 
-import discordrpc.settings.Settings;
-import discordrpc.settings.Theme;
 
 public class SettingsAdapter extends TypeAdapter<Settings>{
 

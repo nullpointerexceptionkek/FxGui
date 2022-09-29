@@ -1,10 +1,11 @@
-package lee.qinzhi.dev.jsonreader.application;
+package lee.qinzhi.dev.application;
 
-import discordrpc.DiscordRP;
-import discordrpc.UpdateManager;
-import discordrpc.Updates;
-import discordrpc.settings.SettingManager;
-import jsonreader.FileManager;
+
+import lee.qinzhi.dev.discordrpc.DiscordRP;
+import lee.qinzhi.dev.discordrpc.UpdateManager;
+import lee.qinzhi.dev.discordrpc.Updates;
+import lee.qinzhi.dev.discordrpc.settings.SettingManager;
+import lee.qinzhi.dev.jsonreader.FileManager;
 import net.arikia.dev.drpc.DiscordRPC;
 
 public class LaunchManager {

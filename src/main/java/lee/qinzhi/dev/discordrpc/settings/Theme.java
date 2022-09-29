@@ -1,4 +1,4 @@
-package lee.qinzhi.dev.jsonreader.discordrpc.settings;
+package lee.qinzhi.dev.discordrpc.settings;
 
 public enum Theme {
 

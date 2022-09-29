@@ -1,10 +1,8 @@
-package lee.qinzhi.dev.jsonreader.application.Gui.LoadingScreen;
+package lee.qinzhi.dev.application.Gui.LoadingScreen;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import application.LaunchManager;
-import discordrpc.DiscordRP;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -19,6 +17,8 @@ import javafx.scene.control.ProgressIndicator;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
+import lee.qinzhi.dev.application.LaunchManager;
+import lee.qinzhi.dev.discordrpc.DiscordRP;
 import net.arikia.dev.drpc.DiscordRPC;
 
 public class LoadingController implements Initializable{
@@ -94,10 +94,10 @@ public class LoadingController implements Initializable{
 							case "readyconfig":
 								Parent root1 = FXMLLoader.load(getClass().getResource("/application/Gui/config/ready/ReadyConfig.fxml"));
 								Scene scene1 = anchorroot.getScene();
-								
+
 								root1.translateYProperty().set(scene1.getHeight());
 								stackpane.getChildren().add(root1);
-								
+
 								Timeline timeline1 = new Timeline();
 								KeyValue keyValue1 = new KeyValue(root1.translateYProperty(), 0,Interpolator.EASE_OUT);
 								KeyFrame keyFrame1 = new KeyFrame(Duration.seconds(1), keyValue1);

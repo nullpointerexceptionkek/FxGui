@@ -1,12 +1,8 @@
-package lee.qinzhi.dev.jsonreader.application.Gui.callbackscreen;
+package lee.qinzhi.dev.application.Gui.callbackscreen;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import application.LaunchManager;
-import application.Gui.LoadingScreen.LoadingController;
-import discordrpc.DiscordRP;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -24,6 +20,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lee.qinzhi.dev.application.Gui.LoadingScreen.LoadingController;
+import lee.qinzhi.dev.application.LaunchManager;
+import lee.qinzhi.dev.discordrpc.DiscordRP;
 
 public class CallBackController implements Initializable{
 	@FXML

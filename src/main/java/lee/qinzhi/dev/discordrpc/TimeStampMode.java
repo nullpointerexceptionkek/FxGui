@@ -1,4 +1,4 @@
-package lee.qinzhi.dev.jsonreader.discordrpc;
+package lee.qinzhi.dev.discordrpc;
 
 public enum TimeStampMode {
 

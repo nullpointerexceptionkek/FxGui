@@ -1,4 +1,4 @@
-package lee.qinzhi.dev.jsonreader.jsonreader;
+package lee.qinzhi.dev.jsonreader;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -9,10 +9,9 @@ import java.io.InputStreamReader;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
-import discordrpc.Script;
-import discordrpc.Updates;
-import discordrpc.settings.Settings;
+import lee.qinzhi.dev.discordrpc.Script;
+import lee.qinzhi.dev.discordrpc.Updates;
+import lee.qinzhi.dev.discordrpc.settings.Settings;
 
 public class FileManager {
 

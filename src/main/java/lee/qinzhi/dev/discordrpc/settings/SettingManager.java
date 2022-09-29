@@ -1,9 +1,11 @@
-package lee.qinzhi.dev.jsonreader.discordrpc.settings;
+package lee.qinzhi.dev.discordrpc.settings;
+
+import lee.qinzhi.dev.jsonreader.FileManager;
 
 import java.io.File;
 
 
-import jsonreader.FileManager;
+
 
 public class SettingManager {
 	

@@ -1,4 +1,4 @@
-package lee.qinzhi.dev.jsonreader.application.Gui.config.ready;
+package lee.qinzhi.dev.application.Gui.config.ready;
 
 
 
@@ -6,17 +6,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
-
-import application.LaunchManager;
-import application.Gui.LoadingScreen.LoadingController;
-import application.Gui.Settings.SettingController;
-import application.Gui.config.EditListController;
-import discordrpc.DiscordRP;
-import discordrpc.Script;
-import discordrpc.Updates;
-import discordrpc.settings.SettingManager;
-import discordrpc.settings.Settings;
-import discordrpc.settings.Theme;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -47,6 +36,14 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import lee.qinzhi.dev.application.Gui.LoadingScreen.LoadingController;
+import lee.qinzhi.dev.application.Gui.Settings.SettingController;
+import lee.qinzhi.dev.application.Gui.config.EditListController;
+import lee.qinzhi.dev.application.LaunchManager;
+import lee.qinzhi.dev.discordrpc.Script;
+import lee.qinzhi.dev.discordrpc.Updates;
+import lee.qinzhi.dev.discordrpc.settings.SettingManager;
+import lee.qinzhi.dev.discordrpc.settings.Settings;
 
 public class ConfigController implements Initializable{
 	

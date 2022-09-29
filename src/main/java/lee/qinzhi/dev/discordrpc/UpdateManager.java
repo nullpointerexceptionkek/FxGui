@@ -1,8 +1,10 @@
-package lee.qinzhi.dev.jsonreader.discordrpc;
+package lee.qinzhi.dev.discordrpc;
+
+import lee.qinzhi.dev.jsonreader.FileManager;
 
 import java.io.File;
 
-import jsonreader.FileManager;
+
 
 public class UpdateManager{
 	protected Script updates;

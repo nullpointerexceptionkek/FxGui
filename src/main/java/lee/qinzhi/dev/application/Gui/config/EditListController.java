@@ -1,14 +1,9 @@
-package lee.qinzhi.dev.jsonreader.application.Gui.config;
+package lee.qinzhi.dev.application.Gui.config;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import application.Gui.config.ready.ConfigController;
-import discordrpc.Script;
-import discordrpc.Updates;
-import discordrpc.settings.Settings;
-import discordrpc.settings.Theme;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -22,6 +17,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lee.qinzhi.dev.application.Gui.config.ready.ConfigController;
+import lee.qinzhi.dev.discordrpc.Script;
+import lee.qinzhi.dev.discordrpc.Updates;
+import lee.qinzhi.dev.discordrpc.settings.Settings;
 
 public class EditListController extends ConfigController implements Initializable{
 	
