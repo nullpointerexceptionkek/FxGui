@@ -1,9 +1,14 @@
-package lee.qinzhi.dev.application.Gui.Settings;
+package lee.qinzhi.dev.jsonreader.application.Gui.Settings;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.EnumSet;
 import java.util.ResourceBundle;
+
+import application.Gui.config.ready.ConfigController;
+import discordrpc.settings.SettingManager;
+import discordrpc.settings.Settings;
+import discordrpc.settings.Theme;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +21,6 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import lee.qinzhi.dev.application.Gui.config.ready.ConfigController;
-import lee.qinzhi.dev.application.discordrpc.settings.SettingManager;
-import lee.qinzhi.dev.application.discordrpc.settings.Settings;
-import lee.qinzhi.dev.application.discordrpc.settings.Theme;
 
 public class SettingController implements Initializable{
 

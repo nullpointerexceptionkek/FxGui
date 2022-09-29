@@ -1,13 +1,13 @@
-package lee.qinzhi.dev.application.discordrpc;
+package lee.qinzhi.dev.jsonreader.discordrpc;
 
-import lee.qinzhi.dev.application.discordrpc.settings.Settings;
+import java.util.Calendar;
+
+import discordrpc.settings.Settings;
 import net.arikia.dev.drpc.DiscordEventHandlers;
 import net.arikia.dev.drpc.DiscordRPC;
 import net.arikia.dev.drpc.DiscordRichPresence;
 import net.arikia.dev.drpc.DiscordUser;
 import net.arikia.dev.drpc.callbacks.ReadyCallback;
-
-import java.util.Calendar;
 
 public class DiscordRP {
 	

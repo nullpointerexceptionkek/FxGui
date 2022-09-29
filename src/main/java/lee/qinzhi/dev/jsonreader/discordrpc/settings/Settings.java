@@ -1,4 +1,4 @@
-package lee.qinzhi.dev.application.discordrpc.settings;
+package lee.qinzhi.dev.jsonreader.discordrpc.settings;
 
 public class Settings {
 

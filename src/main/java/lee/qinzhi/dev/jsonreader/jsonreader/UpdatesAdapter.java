@@ -1,4 +1,4 @@
-package lee.qinzhi.dev.application.jsonreader;
+package lee.qinzhi.dev.jsonreader.jsonreader;
 
 import java.io.IOException;
 
@@ -6,8 +6,8 @@ import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
 import com.google.gson.stream.JsonWriter;
-import lee.qinzhi.dev.application.discordrpc.Updates;
 
+import discordrpc.Updates;
 
 public class UpdatesAdapter extends TypeAdapter<Updates>{
 

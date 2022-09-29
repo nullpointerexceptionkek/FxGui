@@ -1,4 +1,4 @@
-package lee.qinzhi.dev.application.discordrpc;
+package lee.qinzhi.dev.jsonreader.discordrpc;
 
 
 public class Updates {
